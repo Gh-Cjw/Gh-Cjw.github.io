@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-10-19T07:27:22.218Z</updated>
+  <updated>2022-10-19T08:13:55.397Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,22 +17,24 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>庄玲丽大大美女</title>
-    <link href="http://example.com/2022/10/19/%E5%BA%84%E7%8E%B2%E4%B8%BD%E5%A4%A7%E5%A4%A7%E7%BE%8E%E5%A5%B3/"/>
-    <id>http://example.com/2022/10/19/%E5%BA%84%E7%8E%B2%E4%B8%BD%E5%A4%A7%E5%A4%A7%E7%BE%8E%E5%A5%B3/</id>
-    <published>2022-10-19T07:19:44.000Z</published>
-    <updated>2022-10-19T07:27:22.218Z</updated>
+    <title>使用Python进行自动化办公</title>
+    <link href="http://example.com/2022/10/19/%E4%BD%BF%E7%94%A8Python%E8%BF%9B%E8%A1%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8A%9E%E5%85%AC/"/>
+    <id>http://example.com/2022/10/19/%E4%BD%BF%E7%94%A8Python%E8%BF%9B%E8%A1%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8A%9E%E5%85%AC/</id>
+    <published>2022-10-19T07:34:59.000Z</published>
+    <updated>2022-10-19T08:13:55.397Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="庄玲丽大美女"><a href="#庄玲丽大美女" class="headerlink" title="庄玲丽大美女"></a>庄玲丽大美女</h1><hr>]]></content>
+    <content type="html"><![CDATA[<h1 id="使用Python批量处理工作表"><a href="#使用Python批量处理工作表" class="headerlink" title="使用Python批量处理工作表"></a>使用Python批量处理工作表</h1><hr><h2 id="1、实现要求："><a href="#1、实现要求：" class="headerlink" title="1、实现要求："></a>1、实现要求：</h2><p><img lazyload="" alt="image" data-src="https://pic1.imgdb.cn/item/634faa0716f2c2beb13fe5ff.jpg"></p><hr><h2 id="2、配置要求："><a href="#2、配置要求：" class="headerlink" title="2、配置要求："></a>2、配置要求：</h2><blockquote><p>1、安装xlwt、xlrd库，指定版本为1.2.0，因为新版本不支持对xlsx进行操作</p><p>按住Win+R输入cmd进入终端，分别执行以下两个语句即可安装库</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install xlwt==1.2.0</span><br><span class="line">pip install xlrd==1.2.0</span><br></pre></td></tr></tbody></table></figure></blockquote><hr><h2 id="3、编写代码："><a href="#3、编写代码：" class="headerlink" title="3、编写代码："></a>3、编写代码：</h2><blockquote><h4 id="1、首先调用xlrd库打卡“复试名单-xlsx"><a href="#1、首先调用xlrd库打卡“复试名单-xlsx" class="headerlink" title="1、首先调用xlrd库打卡“复试名单.xlsx"></a>1、首先调用xlrd库打卡“复试名单.xlsx</h4><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Book = xlrd.open_workbook(<span class="string">"复试名单.xlsx"</span>) <span class="comment"># 返回一个文件操作对象</span></span><br></pre></td></tr></tbody></table></figure><h4 id="2、打开文件中的表格，并且打印下表格的行列数"><a href="#2、打开文件中的表格，并且打印下表格的行列数" class="headerlink" title="2、打开文件中的表格，并且打印下表格的行列数"></a>2、打开文件中的表格，并且打印下表格的行列数</h4><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Sheet = Book.sheet_by_name(<span class="string">"公示"</span>)<span class="comment"># 打开公示表格，一个xlsx文件内可以有多个表格，因此要指定表格打开</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"表有{}行、{}列"</span>.<span class="built_in">format</span>(Sheet.nrows, Sheet.ncols)) </span><br></pre></td></tr></tbody></table></figure><h4 id="3、读出所有学院并赋值给字典变量，利用字典变量不重复性来查看一共有多少个学院"><a href="#3、读出所有学院并赋值给字典变量，利用字典变量不重复性来查看一共有多少个学院" class="headerlink" title="3、读出所有学院并赋值给字典变量，利用字典变量不重复性来查看一共有多少个学院"></a>3、读出所有学院并赋值给字典变量，利用字典变量不重复性来查看一共有多少个学院</h4><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CollegeName = <span class="built_in">set</span>(data.col_values(<span class="number">4</span>)[<span class="number">1</span>:]) <span class="comment"># 读取第4列，从第一行开始读，因为第一行是列属性</span></span><br></pre></td></tr></tbody></table></figure><h4 id="4、封装一个创建文件和文件夹的函数"><a href="#4、封装一个创建文件和文件夹的函数" class="headerlink" title="4、封装一个创建文件和文件夹的函数"></a>4、封装一个创建文件和文件夹的函数</h4><blockquote><p>创建文件夹需要用到os库，该库为python自带库，不需要安装直接import即可</p></blockquote><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">mkdir</span>(<span class="params">xlsxname</span>):</span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    创建每个学院的文件和文件夹</span></span><br><span class="line"><span class="string">    :param xlsxname: 要创建的文件名称</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    filepath = folder + <span class="string">'\\'</span> + xlsxname  <span class="comment"># 获取当前py文件绝地路径并加上要创建的文件夹名称</span></span><br><span class="line">    d[xlsxname] = []  <span class="comment"># 为每个学院的值创建一个列表来存放数据</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(filepath):  <span class="comment"># 判断文件夹是否已存在</span></span><br><span class="line">        os.mkdir(filepath)  <span class="comment"># 创建文件夹</span></span><br><span class="line">    <span class="keyword">else</span>:  <span class="comment"># 已存在</span></span><br><span class="line">        <span class="built_in">print</span>(xlsxname + <span class="string">" 文件夹已存在"</span>)  <span class="comment"># 打印结果</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="built_in">open</span>(filepath + <span class="string">'\\'</span> + xlsxname + <span class="string">'.xlsx'</span>, <span class="string">'w'</span>).close()  <span class="comment"># 在文件夹内创建表格文件，已存在则覆盖</span></span><br><span class="line">    <span class="keyword">except</span> PermissionError:  <span class="comment"># 文件已被打开在用open打开文件会有PermissionError错误</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"文件被占用，请先退出已打开的xlsx表格文件！"</span>)  <span class="comment"># 打印结果</span></span><br></pre></td></tr></tbody></table></figure></blockquote>]]></content>
     
     
       
       
-    <summary type="html">&lt;h1 id=&quot;庄玲丽大美女&quot;&gt;&lt;a href=&quot;#庄玲丽大美女&quot; class=&quot;headerlink&quot; title=&quot;庄玲丽大美女&quot;&gt;&lt;/a&gt;庄玲丽大美女&lt;/h1&gt;&lt;hr&gt;
-</summary>
+    <summary type="html">&lt;h1 id=&quot;使用Python批量处理工作表&quot;&gt;&lt;a href=&quot;#使用Python批量处理工作表&quot; class=&quot;headerlink&quot; title=&quot;使用Python批量处理工作表&quot;&gt;&lt;/a&gt;使用Python批量处理工作表&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;1、实现要求：&quot;</summary>
       
     
     
+    
+    <category term="Python" scheme="http://example.com/categories/Python/"/>
     
     
   </entry>
@@ -42,7 +44,7 @@
     <link href="http://example.com/2022/10/18/hello-world/"/>
     <id>http://example.com/2022/10/18/hello-world/</id>
     <published>2022-10-18T10:38:08.681Z</published>
-    <updated>2022-10-19T07:14:06.325Z</updated>
+    <updated>2022-10-19T07:59:47.771Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a class="link" href="https://hexo.io/">Hexo<i class="fas fa-external-link-alt"></i></a>! This is your very first post. Check <a class="link" href="https://hexo.io/docs/">documentation<i class="fas fa-external-link-alt"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link" href="https://hexo.io/docs/troubleshooting.html">troubleshooting<i class="fas fa-external-link-alt"></i></a> or you can ask me on <a class="link" href="https://github.com/hexojs/hexo/issues">GitHub<i class="fas fa-external-link-alt"></i></a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></tbody></table></figure><p>More info: <a class="link" href="https://hexo.io/docs/writing.html">Writing<i class="fas fa-external-link-alt"></i></a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></tbody></table></figure><p>More info: <a class="link" href="https://hexo.io/docs/server.html">Server<i class="fas fa-external-link-alt"></i></a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></tbody></table></figure><p>More info: <a class="link" href="https://hexo.io/docs/generating.html">Generating<i class="fas fa-external-link-alt"></i></a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></tbody></table></figure><p>More info: <a class="link" href="https://hexo.io/docs/one-command-deployment.html">Deployment<i class="fas fa-external-link-alt"></i></a></p>]]></content>
     
@@ -54,10 +56,6 @@
     
     
     
-    <category term="嵌入式" scheme="http://example.com/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/"/>
-    
-    
-    <category term="软件开发" scheme="http://example.com/tags/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   

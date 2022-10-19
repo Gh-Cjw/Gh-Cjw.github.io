@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
     <meta name="description" content="Hexo Theme Keep">
-    <meta name="author" content="Pudding Team">
+    <meta name="author" content="Pudding">
     
     <title>
         
-            庄玲丽大大美女 |
+            使用Python进行自动化办公 |
         
-        Pudding Theme
+        Pudding Blog
     </title>
     
 <link rel="stylesheet" href="/css/style.css">
@@ -63,7 +63,7 @@
                 </a>
             
             <a class="logo-title" href="/">
-               Pudding Theme
+               Pudding Blog
             </a>
         </div>
 
@@ -163,7 +163,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">庄玲丽大大美女</span>
+            <span class="title-hover-animation">使用Python进行自动化办公</span>
         </div>
 
         
@@ -173,9 +173,9 @@
                 </div>
                 <div class="info">
                     <div class="author">
-                        <span class="name">Pudding Team</span>
+                        <span class="name">Pudding</span>
                         
-                            <span class="author-label">Lv1</span>
+                            <span class="author-label">hello world工程师</span>
                         
                     </div>
                     <div class="meta-info">
@@ -185,15 +185,26 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2022-10-19 15:19:44</span>
-        <span class="mobile">2022-10-19 15:19</span>
+        <span class="pc">2022-10-19 15:34:59</span>
+        <span class="mobile">2022-10-19 15:34</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2022-10-19 15:27:22</span>
+        <span class="pc">2022-10-19 16:13:55</span>
     </span>
     
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/Python/">Python</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
     
 
@@ -209,7 +220,30 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="庄玲丽大美女"><a href="#庄玲丽大美女" class="headerlink" title="庄玲丽大美女"></a>庄玲丽大美女</h1><hr>
+            <h1 id="使用Python批量处理工作表"><a href="#使用Python批量处理工作表" class="headerlink" title="使用Python批量处理工作表"></a>使用Python批量处理工作表</h1><hr>
+<h2 id="1、实现要求："><a href="#1、实现要求：" class="headerlink" title="1、实现要求："></a>1、实现要求：</h2><p><img lazyload="" alt="image" data-src="https://pic1.imgdb.cn/item/634faa0716f2c2beb13fe5ff.jpg"></p>
+<hr>
+<h2 id="2、配置要求："><a href="#2、配置要求：" class="headerlink" title="2、配置要求："></a>2、配置要求：</h2><blockquote>
+<p>1、安装xlwt、xlrd库，指定版本为1.2.0，因为新版本不支持对xlsx进行操作</p>
+<p>按住Win+R输入cmd进入终端，分别执行以下两个语句即可安装库</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install xlwt==1.2.0</span><br><span class="line">pip install xlrd==1.2.0</span><br></pre></td></tr></tbody></table></figure>
+
+</blockquote>
+<hr>
+<h2 id="3、编写代码："><a href="#3、编写代码：" class="headerlink" title="3、编写代码："></a>3、编写代码：</h2><blockquote>
+<h4 id="1、首先调用xlrd库打卡“复试名单-xlsx"><a href="#1、首先调用xlrd库打卡“复试名单-xlsx" class="headerlink" title="1、首先调用xlrd库打卡“复试名单.xlsx"></a>1、首先调用xlrd库打卡“复试名单.xlsx</h4><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Book = xlrd.open_workbook(<span class="string">"复试名单.xlsx"</span>) 	<span class="comment"># 返回一个文件操作对象</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="2、打开文件中的表格，并且打印下表格的行列数"><a href="#2、打开文件中的表格，并且打印下表格的行列数" class="headerlink" title="2、打开文件中的表格，并且打印下表格的行列数"></a>2、打开文件中的表格，并且打印下表格的行列数</h4><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Sheet = Book.sheet_by_name(<span class="string">"公示"</span>)	<span class="comment"># 打开公示表格，一个xlsx文件内可以有多个表格，因此要指定表格打开</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"表有{}行、{}列"</span>.<span class="built_in">format</span>(Sheet.nrows, Sheet.ncols)) </span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="3、读出所有学院并赋值给字典变量，利用字典变量不重复性来查看一共有多少个学院"><a href="#3、读出所有学院并赋值给字典变量，利用字典变量不重复性来查看一共有多少个学院" class="headerlink" title="3、读出所有学院并赋值给字典变量，利用字典变量不重复性来查看一共有多少个学院"></a>3、读出所有学院并赋值给字典变量，利用字典变量不重复性来查看一共有多少个学院</h4><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CollegeName = <span class="built_in">set</span>(data.col_values(<span class="number">4</span>)[<span class="number">1</span>:]) <span class="comment"># 读取第4列，从第一行开始读，因为第一行是列属性</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="4、封装一个创建文件和文件夹的函数"><a href="#4、封装一个创建文件和文件夹的函数" class="headerlink" title="4、封装一个创建文件和文件夹的函数"></a>4、封装一个创建文件和文件夹的函数</h4><blockquote>
+<p>创建文件夹需要用到os库，该库为python自带库，不需要安装直接import即可</p>
+</blockquote>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">mkdir</span>(<span class="params">xlsxname</span>):</span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    创建每个学院的文件和文件夹</span></span><br><span class="line"><span class="string">    :param xlsxname: 要创建的文件名称</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    filepath = folder + <span class="string">'\\'</span> + xlsxname  <span class="comment"># 获取当前py文件绝地路径并加上要创建的文件夹名称</span></span><br><span class="line">    d[xlsxname] = []  <span class="comment"># 为每个学院的值创建一个列表来存放数据</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(filepath):  <span class="comment"># 判断文件夹是否已存在</span></span><br><span class="line">        os.mkdir(filepath)  <span class="comment"># 创建文件夹</span></span><br><span class="line">    <span class="keyword">else</span>:  <span class="comment"># 已存在</span></span><br><span class="line">        <span class="built_in">print</span>(xlsxname + <span class="string">" 文件夹已存在"</span>)  <span class="comment"># 打印结果</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="built_in">open</span>(filepath + <span class="string">'\\'</span> + xlsxname + <span class="string">'.xlsx'</span>, <span class="string">'w'</span>).close()  <span class="comment"># 在文件夹内创建表格文件，已存在则覆盖</span></span><br><span class="line">    <span class="keyword">except</span> PermissionError:  <span class="comment"># 文件已被打开在用open打开文件会有PermissionError错误</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"文件被占用，请先退出已打开的xlsx表格文件！"</span>)  <span class="comment"># 打印结果</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+</blockquote>
 
         </div>
 
@@ -282,7 +316,7 @@
                 const getValineDomTimer = setInterval(() => {
                     const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
                     if (vcards.length > 0) {
-                        let author = 'Pudding Team';
+                        let author = 'Pudding';
 
                         if (author) {
                             for (let vcard of vcards) {
@@ -340,7 +374,7 @@
             2022
             
                 &nbsp;<i class="fas fa-heart icon-animate"></i>
-                &nbsp;<a href="/">Pudding Team</a>
+                &nbsp;<a href="/">Pudding</a>
             
         </div>
         
@@ -428,7 +462,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%84%E7%8E%B2%E4%B8%BD%E5%A4%A7%E7%BE%8E%E5%A5%B3"><span class="nav-number">1.</span> <span class="nav-text">庄玲丽大美女</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Python%E6%89%B9%E9%87%8F%E5%A4%84%E7%90%86%E5%B7%A5%E4%BD%9C%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">使用Python批量处理工作表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E5%AE%9E%E7%8E%B0%E8%A6%81%E6%B1%82%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">1、实现要求：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E9%85%8D%E7%BD%AE%E8%A6%81%E6%B1%82%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">2、配置要求：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E7%BC%96%E5%86%99%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="nav-number">1.3.</span> <span class="nav-text">3、编写代码：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E9%A6%96%E5%85%88%E8%B0%83%E7%94%A8xlrd%E5%BA%93%E6%89%93%E5%8D%A1%E2%80%9C%E5%A4%8D%E8%AF%95%E5%90%8D%E5%8D%95-xlsx"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">1、首先调用xlrd库打卡“复试名单.xlsx</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E8%A1%A8%E6%A0%BC%EF%BC%8C%E5%B9%B6%E4%B8%94%E6%89%93%E5%8D%B0%E4%B8%8B%E8%A1%A8%E6%A0%BC%E7%9A%84%E8%A1%8C%E5%88%97%E6%95%B0"><span class="nav-number">1.3.0.2.</span> <span class="nav-text">2、打开文件中的表格，并且打印下表格的行列数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E8%AF%BB%E5%87%BA%E6%89%80%E6%9C%89%E5%AD%A6%E9%99%A2%E5%B9%B6%E8%B5%8B%E5%80%BC%E7%BB%99%E5%AD%97%E5%85%B8%E5%8F%98%E9%87%8F%EF%BC%8C%E5%88%A9%E7%94%A8%E5%AD%97%E5%85%B8%E5%8F%98%E9%87%8F%E4%B8%8D%E9%87%8D%E5%A4%8D%E6%80%A7%E6%9D%A5%E6%9F%A5%E7%9C%8B%E4%B8%80%E5%85%B1%E6%9C%89%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%AD%A6%E9%99%A2"><span class="nav-number">1.3.0.3.</span> <span class="nav-text">3、读出所有学院并赋值给字典变量，利用字典变量不重复性来查看一共有多少个学院</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4%E3%80%81%E5%B0%81%E8%A3%85%E4%B8%80%E4%B8%AA%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%92%8C%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.0.4.</span> <span class="nav-text">4、封装一个创建文件和文件夹的函数</span></a></li></ol></li></ol></li></ol></li></ol>
     </div>
 </div>
         </aside>
