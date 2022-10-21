@@ -28,9 +28,9 @@
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"};
   </script>
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
 </head>
 
 
@@ -191,7 +191,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2022-10-21 10:08:57</span>
+        <span class="pc">2022-10-21 15:24:08</span>
     </span>
     
     
@@ -241,20 +241,21 @@
 </blockquote>
 <h3 id="4、变量"><a href="#4、变量" class="headerlink" title="4、变量"></a>4、变量</h3><blockquote>
 <h4 id="①-用户自定义变量"><a href="#①-用户自定义变量" class="headerlink" title="① 用户自定义变量"></a>① 用户自定义变量</h4><p>Shell允许用户建立变量存储数据，但它不支持数据类型（整型、字符、浮点型），任何赋给变量的值都被Shell解释为一串字符，变量命名规则同C++中的命名规则，如下所示</p>
-<blockquote>
 <ul>
-<li>首个字符必须是字母</li>
-<li>中间不能有空格，可以使用下划线(_)</li>
-<li>不能使用其他标点符号</li>
+<li><p>首个字符必须是字母</p>
+</li>
+<li><p>中间不能有空格，可以使用下划线(_)</p>
+</li>
+<li><p>不能使用其他标点符号</p>
+</li>
 </ul>
-</blockquote>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;变量名=值</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">变量名=值</span><br></pre></td></tr></tbody></table></figure>
 
 <p><strong>!!!这里要注意等号两边没有空格</strong></p>
-<blockquote>
-<p>例程</p>
+<ul>
+<li>例程</li>
+</ul>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!bin/bash</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">对变量赋值</span></span><br><span class="line">VAR="hello world" 	# 等号两边不能有空格存在</span><br><span class="line">echo "VAR is:" $VAR # 打印变量VAR的值</span><br></pre></td></tr></tbody></table></figure>
-</blockquote>
 </blockquote>
 
         </div>
