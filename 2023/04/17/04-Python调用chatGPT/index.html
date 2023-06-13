@@ -70,7 +70,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -96,7 +96,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Hugo Blog1</strong>
+      <strong>Hugo Blog</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -317,7 +317,7 @@
             
               <div class="markdown-body">
                 
-                <h2 id="调用Completion实现"><a href="#调用Completion实现" class="headerlink" title="调用Completion实现"></a>调用Completion实现</h2><h3 id="源码："><a href="#源码：" class="headerlink" title="源码："></a>源码：</h3><p><img src="https://i.postimg.cc/FRwL7YD6/2023-04-17-143517.png" alt="2023-04-17-143517.png"></p>
+                <h2 id="调用Completion实现"><a href="#调用Completion实现" class="headerlink" title="调用Completion实现"></a>调用Completion实现</h2><h3 id="源码："><a href="#源码：" class="headerlink" title="源码："></a>源码：</h3><p><img src="https://i.postimg.cc/FRwL7YD6/2023-04-17-143517.png" srcset="/img/loading.gif" lazyload alt="2023-04-17-143517.png"></p>
 <p>出现以下错误时：</p>
 <blockquote>
 <p>openai.error.APIConnectionError: Error communicating with OpenAI: HTTPSConnectionPool(host=’<a href="https://link.zhihu.com/?target=http://api.openai.com/">api.openai.com</a>‘, port=443): Max retries exceeded with url: /v1/engines/text-davinci-003/completions (Caused by NewConnectionError(‘&lt;urllib3.connection.HTTPSConnection object at 0x000001F13B451100&gt;: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。’))</p>
@@ -325,7 +325,7 @@
 <p>可以尝试以下解决方法</p>
 <h3 id="1、降低urllib3版本到1-25-11"><a href="#1、降低urllib3版本到1-25-11" class="headerlink" title="1、降低urllib3版本到1.25.11"></a>1、降低urllib3版本到1.25.11</h3><blockquote>
 <p>通过使用pip list查看urllib3版本</p>
-<p><img src="https://i.postimg.cc/W1DJST1c/2023-04-17-133525.png" alt="2023-04-17-133525" title="查看urllib3版本"></p>
+<p><img src="https://i.postimg.cc/W1DJST1c/2023-04-17-133525.png" srcset="/img/loading.gif" lazyload alt="2023-04-17-133525" title="查看urllib3版本"></p>
 <p>在使用以下指令降低urllib3版本</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install urllib3==1.25.11<br></code></pre></td></tr></table></figure>
 </blockquote>
@@ -334,19 +334,19 @@
 </blockquote>
 <hr>
 <h2 id="调用ChatCompletion实现上下文对话"><a href="#调用ChatCompletion实现上下文对话" class="headerlink" title="调用ChatCompletion实现上下文对话"></a>调用ChatCompletion实现上下文对话</h2><h3 id="1、确保openai版本为0-27-0以上"><a href="#1、确保openai版本为0-27-0以上" class="headerlink" title="1、确保openai版本为0.27.0以上"></a>1、确保openai版本为0.27.0以上</h3><blockquote>
-<p>可以通过<em>pip list</em>查看安装的openai库的版本<img src="https://i.postimg.cc/TPczZBR2/2023-04-17-171923.png" alt="2023-04-17-171923.png" title="查看版本"></p>
+<p>可以通过<em>pip list</em>查看安装的openai库的版本<img src="https://i.postimg.cc/TPczZBR2/2023-04-17-171923.png" srcset="/img/loading.gif" lazyload alt="2023-04-17-171923.png" title="查看版本"></p>
 <p>当发现版本为0.8.0时需要进行升级，通过pip3 install –upgrade openai自动安装不稳定（因为我一直失败），所以建议手动安装：</p>
 <blockquote>
 <p>通过:<a target="_blank" rel="noopener" href="https://pypi.org/project/openai/#files%E4%B8%8B%E8%BD%BD%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC%E7%9A%84openai%E5%BA%93">https://pypi.org/project/openai/#files下载最新版本的openai库</a></p>
 <p>在通过：pip3 install openai-0.27.4-py3-none-any.whl 进行安装（后面这个文件名不一定一样，要根据你下载的文件进行安装）</p>
 </blockquote>
-<p>当安装时出现<img src="https://i.postimg.cc/XNwn815J/2023-04-17-172353.png" alt="2023-04-17-172353.png"></p>
+<p>当安装时出现<img src="https://i.postimg.cc/XNwn815J/2023-04-17-172353.png" srcset="/img/loading.gif" lazyload alt="2023-04-17-172353.png"></p>
 <p>表示你的python版本过低，需要升级至3.7.1以上</p>
 </blockquote>
 <h3 id="2、安装最新版的Anaconda"><a href="#2、安装最新版的Anaconda" class="headerlink" title="2、安装最新版的Anaconda"></a>2、安装最新版的Anaconda</h3><blockquote>
 <p>安装最新版的Anaconda通过<em>pip install openai</em>指令即可安装最新版的openai（0.27.0）版本</p>
 </blockquote>
-<p>最终实现效果:<img src="https://i.postimg.cc/vTr7QgcL/2023-04-17-200837.png" alt="2023-04-17-200837.png"></p>
+<p>最终实现效果:<img src="https://i.postimg.cc/vTr7QgcL/2023-04-17-200837.png" srcset="/img/loading.gif" lazyload alt="2023-04-17-200837.png"></p>
 <h3 id="源码：-1"><a href="#源码：-1" class="headerlink" title="源码："></a>源码：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> openai<br><span class="hljs-keyword">import</span> os<br><br>OPENAI_API_KEY=<span class="hljs-string">&quot;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&quot;</span><br>openai.api_key = os.getenv(<span class="hljs-string">&quot;OPENAI_API_KEY&quot;</span>,OPENAI_API_KEY)<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Chat</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self,conversation_list=[]</span>) -&gt; <span class="hljs-literal">None</span>:<br>        <span class="hljs-comment"># self.conversation_list = [&#123;&#x27;role&#x27;:&#x27;system&#x27;,&#x27;content&#x27;:&#x27;你是一个非常友善的助手&#x27;&#125;]</span><br>        self.conversation_list = []<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">show_conversation</span>(<span class="hljs-params">self,msg_list</span>):<br>        <span class="hljs-keyword">for</span> msg <span class="hljs-keyword">in</span> msg_list:<br>            <span class="hljs-keyword">if</span> msg[<span class="hljs-string">&#x27;role&#x27;</span>] == <span class="hljs-string">&#x27;user&#x27;</span>:<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;\U0001f47b: <span class="hljs-subst">&#123;msg[<span class="hljs-string">&#x27;content&#x27;</span>]&#125;</span>\n&quot;</span>)<br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;\U0001f47D: <span class="hljs-subst">&#123;msg[<span class="hljs-string">&#x27;content&#x27;</span>]&#125;</span>\n&quot;</span>)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">ask</span>(<span class="hljs-params">self,prompt</span>):<br>        self.conversation_list.append(&#123;<span class="hljs-string">&quot;role&quot;</span>:<span class="hljs-string">&quot;user&quot;</span>,<span class="hljs-string">&quot;content&quot;</span>:prompt&#125;)<br>        response = openai.ChatCompletion.create(model=<span class="hljs-string">&quot;gpt-3.5-turbo&quot;</span>,messages=self.conversation_list)<br>        answer = response.choices[<span class="hljs-number">0</span>].message[<span class="hljs-string">&#x27;content&#x27;</span>]<br>        self.conversation_list.append(&#123;<span class="hljs-string">&quot;role&quot;</span>:<span class="hljs-string">&quot;assistant&quot;</span>,<span class="hljs-string">&quot;content&quot;</span>:answer&#125;)<br>        <span class="hljs-comment">#self.show_conversation(self.conversation_list)</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;\U0001f47D: <span class="hljs-subst">&#123;self.conversation_list[-<span class="hljs-number">1</span>][<span class="hljs-string">&#x27;content&#x27;</span>]&#125;</span>\n&quot;</span>) <br>        <span class="hljs-comment">#print(self.conversation_list)</span><br><br>c = Chat()<br><span class="hljs-keyword">while</span> <span class="hljs-number">1</span>:<br>    problem = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;\U0001f47b：&quot;</span>)<br>    c.ask(problem)<br></code></pre></td></tr></table></figure>
 
 <h2 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h2><h3 id="1、token长度不能超过4096"><a href="#1、token长度不能超过4096" class="headerlink" title="1、token长度不能超过4096"></a>1、token长度不能超过4096</h3><p>会出现以下报错：</p>
@@ -606,6 +606,10 @@
 
 
 
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
