@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://bpic.588ku.com/element_origin_min_pic/19/04/09/c6f1df07a9439f12df36af9e813a73ee.jpg">
 <meta property="article:published_time" content="2023-04-06T05:10:25.000Z">
-<meta property="article:modified_time" content="2023-06-13T12:20:02.089Z">
+<meta property="article:modified_time" content="2023-06-13T13:36:20.227Z">
 <meta property="article:author" content="Hugo">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://bpic.588ku.com/element_origin_min_pic/19/04/09/c6f1df07a9439f12df36af9e813a73ee.jpg">
@@ -262,7 +262,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          903 字
+          1k 字
         
       </span>
     
@@ -274,7 +274,7 @@
         
         
           <!-- compatible with older versions-->
-          8 分钟
+          9 分钟
         
       </span>
     
@@ -337,14 +337,17 @@
 
 <h3 id="1-3、安装主题"><a href="#1-3、安装主题" class="headerlink" title="1.3、安装主题"></a>1.3、安装主题</h3><p>在<a target="_blank" rel="noopener" href="https://hexo.io/themes/%E4%B8%AD%E6%8C%91%E9%80%89%E5%96%9C%E6%AC%A2%E7%9A%84%E4%B8%BB%E9%A2%98">https://hexo.io/themes/中挑选喜欢的主题</a></p>
 <h2 id="2、上传博客"><a href="#2、上传博客" class="headerlink" title="2、上传博客"></a>2、上传博客</h2><h3 id="2-1、创建仓库"><a href="#2-1、创建仓库" class="headerlink" title="2.1、创建仓库"></a>2.1、创建仓库</h3><p>在<a target="_blank" rel="noopener" href="http://github.com上创建仓库/">http://github.com上创建仓库</a></p>
-<h3 id="2-2、配置密钥信息"><a href="#2-2、配置密钥信息" class="headerlink" title="2.2、配置密钥信息"></a>2.2、配置密钥信息</h3><p>1.5.1、邮箱换成自己的</p>
+<h3 id="2-2、配置密钥信息"><a href="#2-2、配置密钥信息" class="headerlink" title="2.2、配置密钥信息"></a>2.2、配置密钥信息</h3><p>2.2.1、出现hexo d上传不了的情况：可以尝试使用以下命令重新生成ssh密钥，邮箱换成自己的</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen -t rsa -C “ 邮箱“<br></code></pre></td></tr></table></figure>
 
-<p>1.5.2、name随便写</p>
+<p>用于在本机生成密钥，生成在user/.ssh/id_rsa.pub文件中，复制里面的密钥在去GitHub中生成ssh Key即可</p>
+<p><img src="https://i.postimg.cc/FFMzXH6y/2023-06-13-213153.png" srcset="/img/loading.gif" lazyload alt="image-20230613213007628" title="生成ssh密钥"></p>
+<p>2.2.2、name随便写</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global user.name <span class="hljs-string">&quot;name&quot;</span><br>git config --global user.email <span class="hljs-string">&quot;email&quot;</span><br></code></pre></td></tr></table></figure>
 
 <p>（具体操作参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV14G4y167b4/?spm_id_from=333.788&vd_source=fedd61ea761f3e4d96d202a264797a9d">【零基础】保姆级搭建个人博客hexo第三集_哔哩哔哩_bilibili</a>）</p>
-<h3 id="2-3、指令上传"><a href="#2-3、指令上传" class="headerlink" title="2.3、指令上传"></a>2.3、指令上传</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">cnpm install hexo-deployer-git --save<br></code></pre></td></tr></table></figure>
+<h3 id="2-3、指令上传"><a href="#2-3、指令上传" class="headerlink" title="2.3、指令上传"></a>2.3、指令上传</h3><p>用于下载上传插件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">cnpm install hexo-deployer-git --save<br></code></pre></td></tr></table></figure>
 
 <h2 id="3、网站地址"><a href="#3、网站地址" class="headerlink" title="3、网站地址"></a>3、网站地址</h2><h3 id="Vercel部署"><a href="#Vercel部署" class="headerlink" title="Vercel部署"></a>Vercel部署</h3><p>网址：<a target="_blank" rel="noopener" href="https://vercel.com/">https://vercel.com/</a> 用GitHub登录</p>
 <p>通过腾讯云购买域名解析或者使用默认网址</p>
