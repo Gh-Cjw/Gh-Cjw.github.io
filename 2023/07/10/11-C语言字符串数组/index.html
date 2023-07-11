@@ -16,21 +16,33 @@
   <meta name="author" content="Hugo">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="分类">
-<meta property="og:url" content="http://example.com/categories/index.html">
+    <meta name="description" content="通过char *p[] 创建字符串数组123456789int main(void)&amp;#123;	char *p[10];	char a[] &#x3D; &amp;#123;&quot;hello world&quot;&amp;#125;;	p[0] &#x3D; a;	printf(&quot;%s&quot;, p[0]);		return 0;&amp;#125;  这样就可以打印出字符串”hello world”了，*p[10]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言字符串数组">
+<meta property="og:url" content="http://example.com/2023/07/10/11-C%E8%AF%AD%E8%A8%80%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%BB%84/index.html">
 <meta property="og:site_name" content="Hugo">
+<meta property="og:description" content="通过char *p[] 创建字符串数组123456789int main(void)&amp;#123;	char *p[10];	char a[] &#x3D; &amp;#123;&quot;hello world&quot;&amp;#125;;	p[0] &#x3D; a;	printf(&quot;%s&quot;, p[0]);		return 0;&amp;#125;  这样就可以打印出字符串”hello world”了，*p[10]">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.sj33.cn/uploads/202010/7-201004092934457.jpg">
+<meta property="article:published_time" content="2023-07-10T14:35:06.988Z">
+<meta property="article:modified_time" content="2023-07-11T03:25:38.883Z">
 <meta property="article:author" content="Hugo">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img.sj33.cn/uploads/202010/7-201004092934457.jpg">
   
   
   
-  <title>分类 - Hugo</title>
+  <title>C语言字符串数组 - Hugo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
 
@@ -80,7 +92,7 @@
   <header>
     
 
-<div class="header-inner" style="height: 60vh;">
+<div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -226,9 +238,51 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="分类"></span>
+            <span id="subtitle" data-typed-text="C语言字符串数组"></span>
           
         </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-07-10 22:35" pubdate>
+          星期一, 七月 10日 2023, 10:35 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          299 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          3 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
 
         
       </div>
@@ -244,327 +298,181 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">C语言字符串数组</h1>
+            
+            
+              <div class="markdown-body">
                 
+                <h1 id="通过char-p-创建字符串数组"><a href="#通过char-p-创建字符串数组" class="headerlink" title="通过char *p[] 创建字符串数组"></a>通过char *p[] 创建字符串数组</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span><br>&#123;<br>	<span class="hljs-type">char</span> *p[<span class="hljs-number">10</span>];<br>	<span class="hljs-type">char</span> a[] = &#123;<span class="hljs-string">&quot;hello world&quot;</span>&#125;;<br>	p[<span class="hljs-number">0</span>] = a;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s&quot;</span>, p[<span class="hljs-number">0</span>]);<br>	<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
+<p>这样就可以打印出字符串”hello world”了，*p[10]其实是一个一维字符指针数组，p[0]存放的是char类型的一个一维数组地址。</p>
+<h2 id="s怎么打印出整个字符串"><a href="#s怎么打印出整个字符串" class="headerlink" title="%s怎么打印出整个字符串"></a>%s怎么打印出整个字符串</h2><p>只需要传入一个字符串的首地址，就可以打印出整个字符串，在遇到\0后会停止，与%d不同，%d是给一个整数值，而这里的%s是传入字符串的首地址。</p>
 
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
 
-
-
-<div class="category-list">
+<span class="category-chains">
   
   
     
-    
-    
-    <div class="category row nomargin-x">
-      <a class="category-item collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Java类"
-        id="heading-e0258e2850257932f81fb2484db2ef88" role="tab" data-toggle="collapse" href="#collapse-e0258e2850257932f81fb2484db2ef88"
-        aria-expanded="false"
-      >
-        Java类
-        <span class="list-group-count"></span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-        <a href="/categories/Java%E7%B1%BB/" class="category-count col-2 col-md-1 col-xm-1">
-          <i class="iconfont icon-articles"></i>
-          <span>4</span>
-        </a>
-      
-      <div class="category-collapse collapse " id="collapse-e0258e2850257932f81fb2484db2ef88"
-           role="tabpanel" aria-labelledby="heading-e0258e2850257932f81fb2484db2ef88">
+      <span class="category-chain">
         
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/2023/04/29/07-%E5%86%85%E9%83%A8%E7%B1%BB/" title="匿名类"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">匿名类</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/04/26/06-Java%E4%B8%AD%E7%9A%84%E9%AB%98%E9%98%B6%E5%85%B3%E9%94%AE%E5%AD%97/" title="Java中的高阶关键字"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Java中的高阶关键字</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/04/18/05-%E6%96%B9%E6%B3%95%E7%9A%84%E9%87%8D%E8%BD%BD%E5%92%8C%E9%87%8D%E5%86%99/" title="方法的重载和重写"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">方法的重载和重写</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/04/06/02-Java%E6%95%B0%E7%BB%84%E5%A0%86%E5%92%8C%E6%A0%88/" title="Java数组内存解析"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Java数组内存解析</span>
-        </a>
-      
-    
-  </div>
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
+  
+  
 
-        
-      </div>
+      </span>
+    
+  
+</span>
+
     </div>
   
-    
-    
-    
-    <div class="category row nomargin-x">
-      <a class="category-item collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="笔记类"
-        id="heading-c01739292b7744ba49ea0e64a5f9ef23" role="tab" data-toggle="collapse" href="#collapse-c01739292b7744ba49ea0e64a5f9ef23"
-        aria-expanded="false"
-      >
-        笔记类
-        <span class="list-group-count"></span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-        <a href="/categories/%E7%AC%94%E8%AE%B0%E7%B1%BB/" class="category-count col-2 col-md-1 col-xm-1">
-          <i class="iconfont icon-articles"></i>
-          <span>2</span>
-        </a>
-      
-      <div class="category-collapse collapse " id="collapse-c01739292b7744ba49ea0e64a5f9ef23"
-           role="tabpanel" aria-labelledby="heading-c01739292b7744ba49ea0e64a5f9ef23">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/2023/04/16/03-chatGPT%E6%B3%A8%E5%86%8C%E8%8E%B7%E5%8F%96Key/" title="OpenAI注册获取ChatGPT的API密钥"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">OpenAI注册获取ChatGPT的API密钥</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/04/06/01-Hexo%E5%8D%9A%E5%AE%A2/" title="基于Hexo的博客"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">基于Hexo的博客</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div class="category row nomargin-x">
-      <a class="category-item collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="单片机"
-        id="heading-d1f314cc6e06520a45c2ad7d0dc7fab2" role="tab" data-toggle="collapse" href="#collapse-d1f314cc6e06520a45c2ad7d0dc7fab2"
-        aria-expanded="false"
-      >
-        单片机
-        <span class="list-group-count"></span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-        <a href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/" class="category-count col-2 col-md-1 col-xm-1">
-          <i class="iconfont icon-articles"></i>
-          <span>2</span>
-        </a>
-      
-      <div class="category-collapse collapse " id="collapse-d1f314cc6e06520a45c2ad7d0dc7fab2"
-           role="tabpanel" aria-labelledby="heading-d1f314cc6e06520a45c2ad7d0dc7fab2">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/2023/06/25/10-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F/" title="51单片机内部时钟"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">51单片机内部时钟</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/06/14/09-51%E5%8D%95%E7%89%87%E6%9C%BA%E5%86%85%E9%83%A8%E6%97%B6%E9%92%9F/" title="51单片机内部时钟"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">51单片机内部时钟</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div class="category row nomargin-x">
-      <a class="category-item collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Python类"
-        id="heading-b6606a37fc4be7f7c82365c7cbf9db61" role="tab" data-toggle="collapse" href="#collapse-b6606a37fc4be7f7c82365c7cbf9db61"
-        aria-expanded="false"
-      >
-        Python类
-        <span class="list-group-count"></span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-        <a href="/categories/Python%E7%B1%BB/" class="category-count col-2 col-md-1 col-xm-1">
-          <i class="iconfont icon-articles"></i>
-          <span>1</span>
-        </a>
-      
-      <div class="category-collapse collapse " id="collapse-b6606a37fc4be7f7c82365c7cbf9db61"
-           role="tabpanel" aria-labelledby="heading-b6606a37fc4be7f7c82365c7cbf9db61">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/2023/04/17/04-Python%E8%B0%83%E7%94%A8chatGPT/" title="Python调用chatGPT接口"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">Python调用chatGPT接口</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div class="category row nomargin-x">
-      <a class="category-item collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="FPGA"
-        id="heading-a1b5c56eac8d96bc8d1c7e941a18dbf7" role="tab" data-toggle="collapse" href="#collapse-a1b5c56eac8d96bc8d1c7e941a18dbf7"
-        aria-expanded="false"
-      >
-        FPGA
-        <span class="list-group-count"></span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-        <a href="/categories/FPGA/" class="category-count col-2 col-md-1 col-xm-1">
-          <i class="iconfont icon-articles"></i>
-          <span>1</span>
-        </a>
-      
-      <div class="category-collapse collapse " id="collapse-a1b5c56eac8d96bc8d1c7e941a18dbf7"
-           role="tabpanel" aria-labelledby="heading-a1b5c56eac8d96bc8d1c7e941a18dbf7">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/2023/06/13/08-FPAG%E5%BC%80%E5%8F%91%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" title="FPGA开发软件安装"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">FPGA开发软件安装</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div class="category row nomargin-x">
-      <a class="category-item collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="C语言"
-        id="heading-d117f5dea6b7959c82d4fdb7490c555d" role="tab" data-toggle="collapse" href="#collapse-d117f5dea6b7959c82d4fdb7490c555d"
-        aria-expanded="false"
-      >
-        C语言
-        <span class="list-group-count"></span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-        <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-count col-2 col-md-1 col-xm-1">
-          <i class="iconfont icon-articles"></i>
-          <span>1</span>
-        </a>
-      
-      <div class="category-collapse collapse " id="collapse-d117f5dea6b7959c82d4fdb7490c555d"
-           role="tabpanel" aria-labelledby="heading-d117f5dea6b7959c82d4fdb7490c555d">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/2023/07/10/11-C%E8%AF%AD%E8%A8%80%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%BB%84/" title="C语言字符串数组"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">C语言字符串数组</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
   
 </div>
 
 
-              </div>
-            </div>
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>C语言字符串数组</div>
+      <div>http://example.com/2023/07/10/11-C语言字符串数组/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Hugo</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年7月10日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
           </div>
         </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/06/25/10-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F/" title="51单片机内部时钟">
+                        <span class="hidden-mobile">51单片机内部时钟</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
       </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
     
 
     
@@ -658,6 +566,99 @@
 
 
 
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/js/local-search.js" ></script>
 
