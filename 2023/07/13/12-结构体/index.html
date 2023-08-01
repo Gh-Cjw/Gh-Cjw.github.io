@@ -16,23 +16,23 @@
   <meta name="author" content="Hugo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1T模式和12T模式1T 模式 (不分频) —— 1个系统基本时钟，执行一个动作；（速度更快）12T模式(12分频) —— 12个系统基本时钟，执行一个动作； 即对定时器的时钟进行操作，假设单片机内部时钟为12M，使用12T模式则定时器时钟变为1M 定时器的两种计数速率：12T模式：每12个时钟计数器加1 ​                                            1">
+    <meta name="description" content="结构体的三种声明方式声明方式一12345struct point&amp;#123;	int x;	int y;&amp;#125;;struct point p;  声明方式二1234struct &amp;#123;	int x;	int y;&amp;#125;p;  此时p即为结构体变量，且后期无法通过结构体在创建其他变量，此声明方式很少使用 声明方式三12345struct point&amp;#123;	int x;	int">
 <meta property="og:type" content="article">
-<meta property="og:title" content="51单片机内部时钟">
-<meta property="og:url" content="http://example.com/2023/06/14/09-51%E5%8D%95%E7%89%87%E6%9C%BA%E5%86%85%E9%83%A8%E6%97%B6%E9%92%9F/index.html">
+<meta property="og:title" content="结构体">
+<meta property="og:url" content="http://example.com/2023/07/13/12-%E7%BB%93%E6%9E%84%E4%BD%93/index.html">
 <meta property="og:site_name" content="Hugo">
-<meta property="og:description" content="1T模式和12T模式1T 模式 (不分频) —— 1个系统基本时钟，执行一个动作；（速度更快）12T模式(12分频) —— 12个系统基本时钟，执行一个动作； 即对定时器的时钟进行操作，假设单片机内部时钟为12M，使用12T模式则定时器时钟变为1M 定时器的两种计数速率：12T模式：每12个时钟计数器加1 ​                                            1">
+<meta property="og:description" content="结构体的三种声明方式声明方式一12345struct point&amp;#123;	int x;	int y;&amp;#125;;struct point p;  声明方式二1234struct &amp;#123;	int x;	int y;&amp;#125;p;  此时p即为结构体变量，且后期无法通过结构体在创建其他变量，此声明方式很少使用 声明方式三12345struct point&amp;#123;	int x;	int">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.yufanwei.com/resource/images/77b00ded593a4aa7b4b42bd09df78661_13.jpg">
-<meta property="article:published_time" content="2023-06-14T06:29:36.723Z">
-<meta property="article:modified_time" content="2023-06-14T06:39:03.094Z">
+<meta property="og:image" content="https://img.sj33.cn/uploads/202010/7-201004092934457.jpg">
+<meta property="article:published_time" content="2023-07-13T12:45:26.701Z">
+<meta property="article:modified_time" content="2023-07-14T02:20:00.315Z">
 <meta property="article:author" content="Hugo">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://www.yufanwei.com/resource/images/77b00ded593a4aa7b4b42bd09df78661_13.jpg">
+<meta name="twitter:image" content="https://img.sj33.cn/uploads/202010/7-201004092934457.jpg">
   
   
   
-  <title>51单片机内部时钟 - Hugo</title>
+  <title>结构体 - Hugo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -238,7 +238,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="51单片机内部时钟"></span>
+            <span id="subtitle" data-typed-text="结构体"></span>
           
         </div>
 
@@ -249,8 +249,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-06-14 14:29" pubdate>
-          星期三, 六月 14日 2023, 2:29 下午
+        <time datetime="2023-07-13 20:45" pubdate>
+          星期四, 七月 13日 2023, 8:45 晚上
         </time>
       </span>
     
@@ -262,7 +262,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          276 字
+          345 字
         
       </span>
     
@@ -312,18 +312,21 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">51单片机内部时钟</h1>
+            <h1 style="display: none">结构体</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="1T模式和12T模式"><a href="#1T模式和12T模式" class="headerlink" title="1T模式和12T模式"></a>1T模式和12T模式</h2><p>1T 模式 (不分频) —— 1个系统基本时钟，执行一个动作；（速度更快）<br>12T模式(12分频) —— 12个系统基本时钟，执行一个动作；</p>
-<p>即对定时器的时钟进行操作，假设单片机内部时钟为12M，使用12T模式则定时器时钟变为1M</p>
-<p>定时器的两种计数速率：12T模式：每12个时钟计数器加1</p>
-<p>​                                            1T模式：每1个时钟计数器加1</p>
-<h3 id="AUXR：辅助寄存器"><a href="#AUXR：辅助寄存器" class="headerlink" title="AUXR：辅助寄存器"></a>AUXR：辅助寄存器</h3><p><img src="https://img-blog.csdnimg.cn/20210221143811660.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1JvY2hlcl8yMg==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload></p>
-<p>用于配置定时器的分频系数</p>
-<p>12T —— 8051定时器速度，12分频，输出频率=SYSclk / (65536 - T0) / 2<br>1T —— 8051定时器速度的12倍，不分频，输出频率=SYSclk / 12 / (65536 - T0) / 2</p>
+                <h2 id="结构体的三种声明方式"><a href="#结构体的三种声明方式" class="headerlink" title="结构体的三种声明方式"></a>结构体的三种声明方式</h2><h3 id="声明方式一"><a href="#声明方式一" class="headerlink" title="声明方式一"></a>声明方式一</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">point</span>&#123;</span><br>	<span class="hljs-type">int</span> x;<br>	<span class="hljs-type">int</span> y;<br>&#125;;<br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">point</span> <span class="hljs-title">p</span>;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="声明方式二"><a href="#声明方式二" class="headerlink" title="声明方式二"></a>声明方式二</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> &#123;</span><br>	<span class="hljs-type">int</span> x;<br>	<span class="hljs-type">int</span> y;<br>&#125;p;<br></code></pre></td></tr></table></figure>
+
+<p>此时p即为结构体变量，且后期无法通过结构体在创建其他变量，此声明方式很少使用</p>
+<h3 id="声明方式三"><a href="#声明方式三" class="headerlink" title="声明方式三"></a>声明方式三</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">point</span>&#123;</span><br>	<span class="hljs-type">int</span> x;<br>	<span class="hljs-type">int</span> y;<br>&#125;p;<br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">point</span> <span class="hljs-title">p1</span>;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="使用typedef修改结构体声明"><a href="#使用typedef修改结构体声明" class="headerlink" title="使用typedef修改结构体声明"></a>使用typedef修改结构体声明</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">POINT</span>&#123;</span><br>	<span class="hljs-type">int</span> x;<br>	<span class="hljs-type">int</span> y;<br>&#125;point;<br><br>point p;<br><br><span class="hljs-comment">//typedef</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">int</span> INT;<br>INT i = <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
+
+<p>typedef可以修改声明数据类型名称，使结构体定义变量更加方便</p>
 
                 
               </div>
@@ -342,7 +345,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/" class="category-chain-item">单片机</a>
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
   
   
 
@@ -362,8 +365,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>51单片机内部时钟</div>
-      <div>http://example.com/2023/06/14/09-51单片机内部时钟/</div>
+      <div>结构体</div>
+      <div>http://example.com/2023/07/13/12-结构体/</div>
     </div>
     <div class="license-meta">
       
@@ -375,7 +378,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年6月14日</div>
+          <div>2023年7月13日</div>
         </div>
       
       
@@ -407,9 +410,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/06/25/10-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F/" title="异常处理方式">
+                      <a href="/2023/08/01/13-%E5%8E%9F%E7%90%86%E5%9B%BE%E5%AF%BCPCB%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/" title="原理图导入PCB常见错误">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">异常处理方式</span>
+                        <span class="hidden-mobile">原理图导入PCB常见错误</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -417,8 +420,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/06/13/08-FPAG%E5%BC%80%E5%8F%91%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" title="FPGA开发软件安装">
-                        <span class="hidden-mobile">FPGA开发软件安装</span>
+                      <a href="/2023/07/10/11-C%E8%AF%AD%E8%A8%80%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%BB%84/" title="C语言字符串数组">
+                        <span class="hidden-mobile">C语言字符串数组</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
