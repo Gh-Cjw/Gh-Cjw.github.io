@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>idf.py常用指令</title>
+    <link href="/2023/09/18/16-idf.py%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
+    <url>/2023/09/18/16-idf.py%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</url>
+    
+    <content type="html"><![CDATA[<h1 id="idf-py常用指令"><a href="#idf-py常用指令" class="headerlink" title="idf.py常用指令"></a>idf.py常用指令</h1><hr><ul><li><p><em>idf.py help</em> ：将输出指令列表和使用说明</p></li><li><p>*idf.py set-target<target>*：设置编译咪表，<target>请替换为esp32s3等</p></li><li><p><em>idf.py menuconfig</em>：运行menuconfig终端图像化配置工具，可以选择或修改配置选项，配置结构将保存在sdkconfig文件</p></li><li><p><strong>idf.py build</strong>：开始编译代码，编译产生的中间文件和最终的可执行程序，将默认保存在项目build目录，编译过程是增量式的，如果仅对一个源文件进行修改，下次编译将只重新编译已修改的文件</p></li><li><p><em>idf.py fullclean</em>：删除整个build目录下的内容，包括所有CMake的配置输出文件。下次构建项目时，CMake会从头开始配置项目。请注意，该命令将会递归删除构建目录下的所有文件，请谨慎使用。但项目配置文件同样不会被删除。</p></li><li><p><strong>idf.py flash</strong>：将bulid生成的可执行程序二进制文件烧录进目标ESP32-C3设备中。*-p <port_name>* 和 <em>-b <baud_rate></em> 选项可分别设置串口的设备名和烧录时的波特率，如果不指定将自动搜索串口，并使用默认波特率</p></li><li><p><strong>idf.py monitor</strong>：用于显示目标ESP32-C3设备的串口输出。同样 -p 选项可用于设置主机端串口的设备名，串口打印期间，可按下组合键Ctrl-]退出监控器。</p></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>ESP32</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Linux搭建MQTT服务器</title>
+    <link href="/2023/09/14/15-Ubuntu%E6%90%AD%E5%BB%BAMQTT%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    <url>/2023/09/14/15-Ubuntu%E6%90%AD%E5%BB%BAMQTT%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
+    
+    <content type="html"><![CDATA[<h1 id="在Ubuntu20-04搭建MQTT服务器EMQX"><a href="#在Ubuntu20-04搭建MQTT服务器EMQX" class="headerlink" title="在Ubuntu20.04搭建MQTT服务器EMQX"></a>在Ubuntu20.04搭建MQTT服务器EMQX</h1><p><strong>MQTT是一种协议，而EMQX是协议实现的消息中间件，是MQTT服务端</strong></p><hr><h2 id="使用MQTT-fx客户端测试TCP"><a href="#使用MQTT-fx客户端测试TCP" class="headerlink" title="使用MQTT.fx客户端测试TCP"></a>使用MQTT.fx客户端测试TCP</h2><p><a href="http://mqttfx.jensd.de/index.php">MQTT.fx</a>是一款基于<a href="https://so.csdn.net/so/search?q=Eclipse&spm=1001.2101.3001.7020">Eclipse</a> Paho，使用Java语言编写的MQTT客户端工具。支持通过Topic订阅和发布消息，用来前期和物理云平台调试非常方便。（点击<a href="http://mqttfx.jensd.de/index.php">MQTT.fx</a>即可跳转到官网）</p><h2 id="EMQX主题创建"><a href="#EMQX主题创建" class="headerlink" title="EMQX主题创建"></a>EMQX主题创建</h2><p>EMQX主题可以通过控制台创建，也可通过客户端订阅创建，当客户端订阅一个<strong>Subscribe（订阅）</strong>一个<strong>Topic（主题）</strong>时，如果这个Topic不存在，则EMQX服务端就会创建一个这样的Topic，如果一上来不订阅直接向某个Topic发布消息时，而EMQX服务端此时又没有一个Client Subscribe过这个Topic，原来也没有创建过这个Topic，则会被当成垃圾消息直接丢弃。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>MQTT</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Xshell连接Linux</title>
     <link href="/2023/09/12/14-Xshell%E8%BF%9E%E6%8E%A5Linux/"/>
     <url>/2023/09/12/14-Xshell%E8%BF%9E%E6%8E%A5Linux/</url>
@@ -274,7 +312,7 @@
     <link href="/2013/07/13/hello-world/"/>
     <url>/2013/07/13/hello-world/</url>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><p>那是对你撒旦打撒</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
     
     
     
