@@ -16,23 +16,23 @@
   <meta name="author" content="Hugo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="在window 10运行Xshell 7连接linux（Ubuntu版本）首先要明白在是在window上连接linux，因此window是客户端，linux是服务端，所以在window上需要开启ssh服务，在linux上需要开启sshd服务！！！！  –1、Window上需要做的准备1.1、检查window上是否开启ssh服务按住ALT+R输入cmd进行window的命令行，或者通过搜索行搜索网络">
+    <meta name="description" content="CT117E_M4平台介绍 STM32CubeMX新建工程 流水灯  1、CT117E_M4平台介绍​    蓝桥杯嵌入式赛项CT117E_M4新版硬件平台使用STM32G431RBT6作为MCU，而另一颗STM32F103C8T6则当作仿真器使用，在该新版硬件平台上外接了一颗24MHz的晶振连接到MCU的外部高速晶振引脚上，用作外部高速时钟输入，因此在后面配置到时钟时需要修改外部高速时钟为2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Xshell连接Linux">
-<meta property="og:url" content="http://example.com/2023/09/12/14-Xshell%E8%BF%9E%E6%8E%A5Linux/index.html">
+<meta property="og:title" content="蓝桥杯CT117E_M4-流水灯">
+<meta property="og:url" content="http://example.com/2023/11/16/19-%E8%93%9D%E6%A1%A5%E6%9D%AFCT117E_M4-%E6%B5%81%E6%B0%B4%E7%81%AF/index.html">
 <meta property="og:site_name" content="Hugo">
-<meta property="og:description" content="在window 10运行Xshell 7连接linux（Ubuntu版本）首先要明白在是在window上连接linux，因此window是客户端，linux是服务端，所以在window上需要开启ssh服务，在linux上需要开启sshd服务！！！！  –1、Window上需要做的准备1.1、检查window上是否开启ssh服务按住ALT+R输入cmd进行window的命令行，或者通过搜索行搜索网络">
+<meta property="og:description" content="CT117E_M4平台介绍 STM32CubeMX新建工程 流水灯  1、CT117E_M4平台介绍​    蓝桥杯嵌入式赛项CT117E_M4新版硬件平台使用STM32G431RBT6作为MCU，而另一颗STM32F103C8T6则当作仿真器使用，在该新版硬件平台上外接了一颗24MHz的晶振连接到MCU的外部高速晶振引脚上，用作外部高速时钟输入，因此在后面配置到时钟时需要修改外部高速时钟为2">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://itigic.com/wp-content/uploads/2020/02/linux-2.jpg">
-<meta property="article:published_time" content="2023-09-12T11:27:56.511Z">
-<meta property="article:modified_time" content="2023-11-05T14:29:33.961Z">
+<meta property="og:image" content="https://www.st.com/content/dam/st-crew/developer-zone/developer-zone-homepage/Subbrand_STM32.svg">
+<meta property="article:published_time" content="2023-11-16T12:47:33.216Z">
+<meta property="article:modified_time" content="2023-11-16T17:01:44.534Z">
 <meta property="article:author" content="Hugo">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://itigic.com/wp-content/uploads/2020/02/linux-2.jpg">
+<meta name="twitter:image" content="https://www.st.com/content/dam/st-crew/developer-zone/developer-zone-homepage/Subbrand_STM32.svg">
   
   
   
-  <title>Xshell连接Linux - Hugo</title>
+  <title>蓝桥杯CT117E_M4-流水灯 - Hugo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -238,7 +238,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Xshell连接Linux"></span>
+            <span id="subtitle" data-typed-text="蓝桥杯CT117E_M4-流水灯"></span>
           
         </div>
 
@@ -249,8 +249,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-12 19:27" pubdate>
-          星期二, 九月 12日 2023, 7:27 晚上
+        <time datetime="2023-11-16 20:47" pubdate>
+          星期四, 十一月 16日 2023, 8:47 晚上
         </time>
       </span>
     
@@ -262,7 +262,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.2k 字
+          1.8k 字
         
       </span>
     
@@ -274,7 +274,7 @@
         
         
           <!-- compatible with older versions-->
-          11 分钟
+          15 分钟
         
       </span>
     
@@ -312,40 +312,50 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Xshell连接Linux</h1>
+            <h1 style="display: none">蓝桥杯CT117E_M4-流水灯</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="在window-10运行Xshell-7连接linux（Ubuntu版本）"><a href="#在window-10运行Xshell-7连接linux（Ubuntu版本）" class="headerlink" title="在window 10运行Xshell 7连接linux（Ubuntu版本）"></a>在window 10运行Xshell 7连接linux（Ubuntu版本）</h1><p><strong>首先要明白在是在window上连接linux，因此window是客户端，linux是服务端，所以在window上需要开启ssh服务，在linux上需要开启sshd服务！！！！</strong></p>
+                <hr>
+<ol>
+<li>CT117E_M4平台介绍</li>
+<li>STM32CubeMX新建工程</li>
+<li>流水灯</li>
+</ol>
+<h2 id="1、CT117E-M4平台介绍"><a href="#1、CT117E-M4平台介绍" class="headerlink" title="1、CT117E_M4平台介绍"></a>1、CT117E_M4平台介绍</h2><p>​    蓝桥杯嵌入式赛项CT117E_M4新版硬件平台使用<strong>STM32G431RBT6</strong>作为MCU，而另一颗<em>STM32F103C8T6</em>则当作仿真器使用，在该新版硬件平台上外接了一颗<strong>24MHz</strong>的晶振连接到MCU的外部高速晶振引脚上，用作外部高速时钟输入，因此在后面配置到时钟时需要修改外部高速时钟为24MHz</p>
+<p>​    该硬件平台上使用74HC573来控制八颗LED灯的亮灭，74HC573主要用作所存输出的功能，LE引脚接在<strong>PD2</strong>上，通过PD2来开关，八个输入分别接在<strong>PC8~PC15</strong>，输出接在八个LED灯的负极，因此输入低电平时点亮</p>
+<h2 id="2、STM32CubeMX新建工程"><a href="#2、STM32CubeMX新建工程" class="headerlink" title="2、STM32CubeMX新建工程"></a>2、STM32CubeMX新建工程</h2><h3 id="安装软件包"><a href="#安装软件包" class="headerlink" title="安装软件包"></a>安装软件包</h3><p>第一次新建工程需要留意是否安装相应的G431的软件包，没有安装可以通过以下步骤进行安装</p>
+<p>打开软件包管理页面</p>
+<p><img src="https://pic.imgdb.cn/item/65561ea7c458853aef5401eb.png" srcset="/img/loading.gif" lazyload alt="软件包管理页面"></p>
+<p>选择一个版本进行下载，下载完成后会在前面方框显示绿色表示已安装</p>
+<p><img src="https://pic.imgdb.cn/item/65561ea8c458853aef540317.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-1、系统配置"><a href="#2-1、系统配置" class="headerlink" title="2.1、系统配置"></a>2.1、系统配置</h3><p>在系统配置这里需要留意Debug要选择串口写入，不然可能影响后面程序下载</p>
+<p><img src="https://pic.imgdb.cn/item/65561fc1c458853aef588810.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里RCC时钟高速外部时钟要选择外部振荡器才能使能</p>
+<p><img src="https://pic.imgdb.cn/item/65561fc1c458853aef588886.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2、引脚配置"><a href="#2-2、引脚配置" class="headerlink" title="2.2、引脚配置"></a>2.2、引脚配置</h3><p>在引脚配置上可以在芯片引脚右键设置模式，在output level可以设置引脚一开始的电平，全高可以使上电所有LED灯熄灭，PD2为低电平表示关闭74HC573</p>
+<p><img src="https://pic.imgdb.cn/item/655624c8c458853aef6e5a4a.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-3、时钟配置"><a href="#2-3、时钟配置" class="headerlink" title="2.3、时钟配置"></a>2.3、时钟配置</h3><p>这里的外部高速时钟要改成24MHz，时钟源要选择外部高速时钟，系统时钟这里要选择PLL锁相环时钟，通过分频和倍频，最后的系统时钟要配置在80MHz</p>
+<p><img src="https://pic.imgdb.cn/item/655628dbc458853aef8122d2.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-4、项目管理"><a href="#2-4、项目管理" class="headerlink" title="2.4、项目管理"></a>2.4、项目管理</h3><p>项目管理需要留意项目的路径不能有中文，IDE根据你自己的IDE进行选择</p>
+<p><img src="https://pic.imgdb.cn/item/655629b2c458853aef84db77.png" srcset="/img/loading.gif" lazyload></p>
+<p>画红圈的是选择单独生成相应的.c和.h文件，这样有利于项目管理，不会导致所有初始化函数都在main.c文件中导致文件代码过多（其他选项默认即可）</p>
+<p><img src="https://pic.imgdb.cn/item/655629b2c458853aef84dbe1.png" srcset="/img/loading.gif" lazyload></p>
+<p>（翻译后的功能选项👇）</p>
+<p><img src="https://pic.imgdb.cn/item/65562a9bc458853aef895eb2.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>最后通过右上角的Generate Code生成代码即可</p>
+<p><img src="https://pic.imgdb.cn/item/65562a50c458853aef880d00.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3、流水灯"><a href="#3、流水灯" class="headerlink" title="3、流水灯"></a>3、流水灯</h2><p>第一次通过MDK打开项目代码可能显示👇，主要是因为器件支持包版本问题，这只是一个警告，对正常使用不影响</p>
+<p><img src="https://pic.imgdb.cn/item/65562ca4c458853aef938745.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以通过MDK安装文件夹里找到这个pdsc文件，取消只读属性，打开进行修改</p>
+<p><img src="https://pic.imgdb.cn/item/65562ca4c458853aef93883d.png" srcset="/img/loading.gif" lazyload></p>
+<p>将181行这个代码注释即可</p>
+<p><img src="https://pic.imgdb.cn/item/65562ca5c458853aef938929.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span><br>&#123;<br>  <span class="hljs-comment">/* USER CODE BEGIN 1 */</span><br>  <span class="hljs-comment">/* USER CODE END 1 */</span><br><br>  <span class="hljs-comment">/* MCU Configuration--------------------------------------------------------*/</span><br><br>  <span class="hljs-comment">/* Reset of all peripherals, Initializes the Flash interface and the Systick. */</span><br>  HAL_Init();<br><br>  <span class="hljs-comment">/* USER CODE BEGIN Init */</span><br><br>  <span class="hljs-comment">/* USER CODE END Init */</span><br><br>  <span class="hljs-comment">/* Configure the system clock */</span><br>  SystemClock_Config();<br><br>  <span class="hljs-comment">/* USER CODE BEGIN SysInit */</span><br><br>  <span class="hljs-comment">/* USER CODE END SysInit */</span><br><br>  <span class="hljs-comment">/* Initialize all configured peripherals */</span><br>  MX_GPIO_Init();<br>  <span class="hljs-comment">/* USER CODE BEGIN 2 */</span><br>	HAL_GPIO_WritePin(GPIOD,GPIO_PIN_2,GPIO_PIN_SET);<span class="hljs-comment">//打开74HC573</span><br>  <span class="hljs-comment">/* USER CODE END 2 */</span><br><br>  <span class="hljs-comment">/* Infinite loop */</span><br>  <span class="hljs-comment">/* USER CODE BEGIN WHILE */</span><br>  <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>)<br>  &#123;<br>    <span class="hljs-comment">/* USER CODE END WHILE */</span><br>		HAL_GPIO_WritePin(GPIOC,GPIO_PIN_All&amp;<span class="hljs-number">0xFF00</span>,GPIO_PIN_SET);<span class="hljs-comment">//熄灭所有LED灯</span><br>		HAL_Delay(<span class="hljs-number">500</span>);<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">8</span>; i++)<br>		&#123;<br>			HAL_GPIO_WritePin(GPIOC,GPIO_PIN_8&lt;&lt;i,GPIO_PIN_RESET);<br>			HAL_Delay(<span class="hljs-number">500</span>);<br>		&#125;<br>    <span class="hljs-comment">/* USER CODE BEGIN 3 */</span><br>  &#125;<br>  <span class="hljs-comment">/* USER CODE END 3 */</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h3><p><img src="https://pic.imgdb.cn/item/65564a74c458853aef0fe6d5.jpg" srcset="/img/loading.gif" lazyload></p>
 <hr>
-<h2 id="–1、Window上需要做的准备"><a href="#–1、Window上需要做的准备" class="headerlink" title="–1、Window上需要做的准备"></a>–1、Window上需要做的准备</h2><h3 id="1-1、检查window上是否开启ssh服务"><a href="#1-1、检查window上是否开启ssh服务" class="headerlink" title="1.1、检查window上是否开启ssh服务"></a>1.1、检查window上是否开启ssh服务</h3><p>按住ALT+R输入cmd进行window的命令行，或者通过搜索行搜索网络提示符（用管理员身份打开！），输入以下指令开启sshd</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">net start sshd<br></code></pre></td></tr></table></figure>
-
-<p>如果没有显示服务正在启动或者是服务已经启动成功，可能是因为系统没有安装OpenSSH 服务器，需要在window电脑设置中找到<strong>应用与功能</strong>-&gt;<strong>可选功能</strong>-&gt;<strong>添加功能</strong>-&gt;中搜索”OpenSSH 服务器“进行安装（最好把”OpenSSH 客户端“也给安装了），然后重新运行上面命令启动sshd服务</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">net stop sshd(也可以通过这个命令暂停sshd服务)<br></code></pre></td></tr></table></figure>
-
-<h2 id="–2、Linux上需要做的准备"><a href="#–2、Linux上需要做的准备" class="headerlink" title="–2、Linux上需要做的准备"></a>–2、Linux上需要做的准备</h2><h3 id="2-1、安装sshd"><a href="#2-1、安装sshd" class="headerlink" title="2.1、安装sshd"></a>2.1、安装sshd</h3><p>通过指令进行安装ssh服务端</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt-get install openssh-server<br></code></pre></td></tr></table></figure>
-
-<h3 id="2-2、开启sshd服务"><a href="#2-2、开启sshd服务" class="headerlink" title="2.2、开启sshd服务"></a>2.2、开启sshd服务</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo /etc/init.d/ssh start<br></code></pre></td></tr></table></figure>
-
-<p>打印Starting ssh说明开启成功</p>
-<h3 id="2-3、检查sshd服务状态"><a href="#2-3、检查sshd服务状态" class="headerlink" title="2.3、检查sshd服务状态"></a>2.3、检查sshd服务状态</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ps -e | gerp ssh<br></code></pre></td></tr></table></figure>
-
-<p>有打印：6534 ？ 00：00：00 sshd则说明sshd运行正常</p>
-<h2 id="–3、Xshell连接Linux"><a href="#–3、Xshell连接Linux" class="headerlink" title="–3、Xshell连接Linux"></a>–3、Xshell连接Linux</h2><h3 id="3-1、新建连接"><a href="#3-1、新建连接" class="headerlink" title="3.1、新建连接"></a>3.1、新建连接</h3><p>首先打开<strong>文件</strong>-&gt;<strong>新建连接</strong></p>
-<p><img src="https://pic.imgdb.cn/item/650058c2661c6c8e54015787.png" srcset="/img/loading.gif" lazyload> </p>
-<p>虚拟机IP可通过终端命令ifconfig查看</p>
-<p><img src="https://pic.imgdb.cn/item/65006998661c6c8e540b05c0.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="3-2、用户身份验证"><a href="#3-2、用户身份验证" class="headerlink" title="3.2、用户身份验证"></a>3.2、用户身份验证</h3><p>输入普通用户名以及密码，此处不能使用root超级用户</p>
-<p><img src="https://pic.imgdb.cn/item/650069af661c6c8e540b0a22.png" srcset="/img/loading.gif" lazyload></p>
-<p>还可以在<strong>外观</strong>选项中修改一下字体大小，建议改成<strong>12</strong></p>
-<h3 id="3-3、连接"><a href="#3-3、连接" class="headerlink" title="3.3、连接"></a>3.3、连接</h3><p>点击连接即可连接到linux服务器，就可以正常使用命令行了，如出现连接失败的情况可以检查电脑和Linux是否都正常打开了相应ssh服务</p>
-<p><img src="https://pic.imgdb.cn/item/6500719f661c6c8e54107b93.png" srcset="/img/loading.gif" lazyload></p>
-<hr>
-<p>关于Xshell连接Linux出现连接失败（connection failed）的问题，参考以下文章：</p>
-<p>[解决Xshell7远程连接失败（connection failed）的问题_xshell connection failed_不是桐阿姨的博客-CSDN博客](<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_52452585/article/details/123766668#:~:text=%E6%88%91%E8%AF%95%E5%9B%BE%E5%88%A9%E7%94%A8Xshell%EF%BC%8C%E5%9C%A8windows%E4%B8%8A%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E8%99%9A%E6%8B%9F%E6%9C%BALinux%EF%BC%8C%E4%BD%86%E6%98%AF%E6%8C%89%E7%85%A7%E6%95%99%E7%A8%8B%E4%B8%80%E6%AD%A5%E6%AD%A5%E8%B5%B0%E4%B8%8B%E6%9D%A5%EF%BC%8C%E6%8A%A5%E4%BA%86%E5%A6%82%E4%B8%8B%E4%B8%80%E4%B8%AA%E9%94%99%E8%AF%AF%EF%BC%9A">https://blog.csdn.net/m0_52452585/article/details/123766668#:~:text=我试图利用Xshell，在windows上远程连接虚拟机Linux，但是按照教程一步步走下来，报了如下一个错误：</a> 原因 windows没有打开ssh，Linux系统没有打开sshd（只打开了ssh）,所以有问题的朋友可以先检查一下这两个功能是否打开 windows一开始是ssh和sshd都没有打开的，这个一定要去看看 如果都打开了的话，可以去看看其他可能的问题，这里指路：http%3A%2F%2Ft.csdn.cn%2FdiwT3)</p>
 
                 
               </div>
@@ -364,7 +374,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  <a href="/categories/STM32/" class="category-chain-item">STM32</a>
   
   
 
@@ -384,8 +394,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Xshell连接Linux</div>
-      <div>http://example.com/2023/09/12/14-Xshell连接Linux/</div>
+      <div>蓝桥杯CT117E_M4-流水灯</div>
+      <div>http://example.com/2023/11/16/19-蓝桥杯CT117E_M4-流水灯/</div>
     </div>
     <div class="license-meta">
       
@@ -397,7 +407,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年9月12日</div>
+          <div>2023年11月16日</div>
         </div>
       
       
@@ -429,18 +439,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/14/15-Ubuntu%E6%90%AD%E5%BB%BAMQTT%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="Linux搭建MQTT服务器">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Linux搭建MQTT服务器</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/08/01/13-%E5%8E%9F%E7%90%86%E5%9B%BE%E5%AF%BCPCB%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/" title="原理图导入PCB常见错误">
-                        <span class="hidden-mobile">原理图导入PCB常见错误</span>
+                      <a href="/2023/09/24/18-FreeRTOS-01_%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E5%87%BD%E6%95%B0/" title="FreeRTOS-01_动态创建函数">
+                        <span class="hidden-mobile">FreeRTOS-01_动态创建函数</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
