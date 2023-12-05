@@ -16,23 +16,23 @@
   <meta name="author" content="Hugo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="目录 功能实现及思路 STM32CubeMX配置  相关函数 编写回调函数  1、功能实现及思路 功能：串口控制LED灯 思路：在串口接收回调函数中存储收到的数据，并根据\r\n来判断数据是否接收完整，然后根据相应指令开关灯  2、STM32CubeMX配置2.1、USART1配置串口模式选择异步通讯  DMA设置通过下面的Add添加两个DMA通道  2.2、时钟配置 配置系统时钟为80MHz">
+    <meta name="description" content="目录 功能实现及思路 STM32CubeMX配置  相关函数 编写主函数  1、功能实现及思路 功能：通过按键控制PWM输出占空比 思路：设置PA6输出100Hz脉冲，PA7输出200Hz脉冲，在定时器3中检测按键点击，并在主函数中对PWM占空比进行调节，占空比范围为0~100%，频率固定  2、STM32CubeMX配置2.1、PWM配置在CT117E_M4硬件平台上，PA6和PA7通过J3排">
 <meta property="og:type" content="article">
-<meta property="og:title" content="蓝桥杯CT117E_M4(G431)-USART+DMA">
-<meta property="og:url" content="http://example.com/2023/11/20/21-%E8%93%9D%E6%A1%A5%E6%9D%AFCT117E_M4(G431)-USART/index.html">
+<meta property="og:title" content="蓝桥杯CT117E_M4(G431)-PWM输出">
+<meta property="og:url" content="http://example.com/2023/11/21/22-%E8%93%9D%E6%A1%A5%E6%9D%AFCT117E_M4(G431)-PWM%E8%BE%93%E5%87%BA/index.html">
 <meta property="og:site_name" content="Hugo">
-<meta property="og:description" content="目录 功能实现及思路 STM32CubeMX配置  相关函数 编写回调函数  1、功能实现及思路 功能：串口控制LED灯 思路：在串口接收回调函数中存储收到的数据，并根据\r\n来判断数据是否接收完整，然后根据相应指令开关灯  2、STM32CubeMX配置2.1、USART1配置串口模式选择异步通讯  DMA设置通过下面的Add添加两个DMA通道  2.2、时钟配置 配置系统时钟为80MHz">
+<meta property="og:description" content="目录 功能实现及思路 STM32CubeMX配置  相关函数 编写主函数  1、功能实现及思路 功能：通过按键控制PWM输出占空比 思路：设置PA6输出100Hz脉冲，PA7输出200Hz脉冲，在定时器3中检测按键点击，并在主函数中对PWM占空比进行调节，占空比范围为0~100%，频率固定  2、STM32CubeMX配置2.1、PWM配置在CT117E_M4硬件平台上，PA6和PA7通过J3排">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.st.com/content/dam/st-crew/developer-zone/developer-zone-homepage/Subbrand_STM32.svg">
-<meta property="article:published_time" content="2023-11-20T10:17:36.038Z">
-<meta property="article:modified_time" content="2023-11-21T13:03:43.974Z">
+<meta property="article:published_time" content="2023-11-21T09:15:43.408Z">
+<meta property="article:modified_time" content="2023-11-21T10:18:37.028Z">
 <meta property="article:author" content="Hugo">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://www.st.com/content/dam/st-crew/developer-zone/developer-zone-homepage/Subbrand_STM32.svg">
   
   
   
-  <title>蓝桥杯CT117E_M4(G431)-USART+DMA - Hugo</title>
+  <title>蓝桥杯CT117E_M4(G431)-PWM输出 - Hugo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -238,7 +238,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="蓝桥杯CT117E_M4(G431)-USART+DMA"></span>
+            <span id="subtitle" data-typed-text="蓝桥杯CT117E_M4(G431)-PWM输出"></span>
           
         </div>
 
@@ -249,8 +249,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-20 18:17" pubdate>
-          星期一, 十一月 20日 2023, 6:17 晚上
+        <time datetime="2023-11-21 17:15" pubdate>
+          星期二, 十一月 21日 2023, 5:15 下午
         </time>
       </span>
     
@@ -262,7 +262,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          5.4k 字
+          5.3k 字
         
       </span>
     
@@ -312,7 +312,7 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">蓝桥杯CT117E_M4(G431)-USART+DMA</h1>
+            <h1 style="display: none">蓝桥杯CT117E_M4(G431)-PWM输出</h1>
             
             
               <div class="markdown-body">
@@ -322,71 +322,62 @@
 <li>功能实现及思路</li>
 <li>STM32CubeMX配置 </li>
 <li><strong>相关函数</strong></li>
-<li>编写回调函数</li>
+<li>编写主函数</li>
 </ol>
 <h1 id="1、功能实现及思路"><a href="#1、功能实现及思路" class="headerlink" title="1、功能实现及思路"></a>1、功能实现及思路</h1><blockquote>
-<p>功能：串口控制LED灯</p>
-<p>思路：在串口接收回调函数中存储收到的数据，并根据\r\n来判断数据是否接收完整，然后根据相应指令开关灯</p>
+<p>功能：通过按键控制PWM输出占空比</p>
+<p>思路：设置PA6输出100Hz脉冲，PA7输出200Hz脉冲，在定时器3中检测按键点击，并在主函数中对PWM占空比进行调节，占空比范围为0~100%，频率固定</p>
 </blockquote>
-<h1 id="2、STM32CubeMX配置"><a href="#2、STM32CubeMX配置" class="headerlink" title="2、STM32CubeMX配置"></a>2、STM32CubeMX配置</h1><h2 id="2-1、USART1配置"><a href="#2-1、USART1配置" class="headerlink" title="2.1、USART1配置"></a>2.1、USART1配置</h2><p>串口模式选择异步通讯</p>
-<p><img src="https://pic.imgdb.cn/item/655b6cb3c458853aef932e51.png" srcset="/img/loading.gif" lazyload></p>
-<p>DMA设置通过下面的Add添加两个DMA通道</p>
-<p><img src="https://pic.imgdb.cn/item/655b6cb3c458853aef932f6c.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="2、STM32CubeMX配置"><a href="#2、STM32CubeMX配置" class="headerlink" title="2、STM32CubeMX配置"></a>2、STM32CubeMX配置</h1><h2 id="2-1、PWM配置"><a href="#2-1、PWM配置" class="headerlink" title="2.1、PWM配置"></a>2.1、PWM配置</h2><p>在CT117E_M4硬件平台上，PA6和PA7通过J3排针可以外接，且PA6为TIM16的PWM通道1输出，PA7为TIM17的PWM通道一输出，因此可以将PA6和PA7设置为定时器通道输出，并在左边的Timers选项下开启相应操作，并设置预分频系数和重装载值来设定频率</p>
+<p><strong>计算公式：</strong>首先TIM16和TIM17的时钟都是80Mhz，因为PA6要输出100Hz脉冲，所以要确保通过预分频和重装载后的中断频率是100Hz，即 <strong>80MHz/(psc+1)/(arr+1)=100Hz</strong>，我们可以先设定重装载值arr为99（当然也可以先设定预分频数，只要确保取值在范围内且最后得到100Hz的脉冲频率即可），那么80Mhz/(99+1)=800Khz，因此只有当预分频为7999时，800Khz/(7999+1)=100Hz，此时输出的脉冲频率即可100Hz，因此为了使TIM17输出200Hz频率的脉冲，当重装载值99不变的情况下，只需要把预分频缩小一倍为3999即可生成200Hz的频率，具体公式为<strong>80Mhz/(3999+1)/(99+1)=200Hz</strong></p>
+<p><img src="https://pic.imgdb.cn/item/655c7678c458853aef6eab2e.png" srcset="/img/loading.gif" lazyload><br><img src="https://pic.imgdb.cn/item/655c7678c458853aef6eaba1.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="2-2、时钟配置"><a href="#2-2、时钟配置" class="headerlink" title="2.2、时钟配置"></a>2.2、时钟配置</h2><blockquote>
 <p>配置系统时钟为80MHz</p>
 </blockquote>
 <p><img src="https://pic.imgdb.cn/item/655628dbc458853aef8122d2.png" srcset="/img/loading.gif" lazyload></p>
-<h1 id="3、相关函数"><a href="#3、相关函数" class="headerlink" title="3、相关函数"></a>3、相关函数</h1><h2 id="3-1、HAL-UART-Receive"><a href="#3-1、HAL-UART-Receive" class="headerlink" title="3.1、HAL_UART_Receive()"></a>3.1、HAL_UART_Receive()</h2><ul>
-<li>函数功能：<strong>阻塞式</strong>串口接收函数</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C">HAL_StatusTypeDef <span class="hljs-title function_">HAL_UART_Receive</span><span class="hljs-params">(UART_HandleTypeDef *huart, <span class="hljs-type">uint8_t</span> *pData, <span class="hljs-type">uint16_t</span> Size, <span class="hljs-type">uint32_t</span> Timeout)</span>;<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>huart：</strong>UART句柄</li>
-<li><strong>pData：</strong>指向数据缓冲区（u8或u16数据元素）的指针（即你自己定义的数组或者变量）</li>
-<li><strong>Size：</strong>要接收的数据元素（u8或u16）的数量</li>
-<li><strong>Timeout：</strong>设置超时时间</li>
-</ul>
-<blockquote>
-<p>只有当接收到<strong>Size</strong>或者时间超过设定超时时间才会退出，不然一直等待</p>
-</blockquote>
-<p>该函数会一直等待串口接收到数据，才会执行后面的语句，或者是超过Timeout设定的超时时间</p>
-<h2 id="3-2、HAL-UART-Receive-IT"><a href="#3-2、HAL-UART-Receive-IT" class="headerlink" title="3.2、HAL_UART_Receive_IT()"></a>3.2、HAL_UART_Receive_IT()</h2><ul>
-<li>函数功能：<strong>非阻塞式</strong>串口接收函数（<em>需要注意每次接收完成后需要重新调用开启接收</em>）</li>
+<h1 id="3、相关函数"><a href="#3、相关函数" class="headerlink" title="3、相关函数"></a>3、相关函数</h1><h2 id="3-1、HAL-UART-Receive-IT"><a href="#3-1、HAL-UART-Receive-IT" class="headerlink" title="3.1、HAL_UART_Receive_IT()"></a>3.1、HAL_UART_Receive_IT()</h2><ul>
+<li>函数功能：用于开启串口接收（<em>需要注意每次接收完成后需要重新调用开启接收</em>）</li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">HAL_StatusTypeDef <span class="hljs-title function_">HAL_UART_Receive_IT</span><span class="hljs-params">(UART_HandleTypeDef *huart, <span class="hljs-type">uint8_t</span> *pData, <span class="hljs-type">uint16_t</span> Size)</span><br></code></pre></td></tr></table></figure>
 
+<ul>
+<li><p><strong>huart：</strong>UART句柄</p>
+</li>
+<li><p><strong>pData：</strong>指向数据缓冲区（u8或u16数据元素）的指针（即你自己定义的数组或者变量）</p>
+</li>
+<li><p><strong>Size：</strong>要接收的数据元素（u8或u16）的数量</p>
+</li>
+</ul>
 <blockquote>
 <p>只有当接收到<strong>Size</strong>个数据后才会进入回调函数<strong>HAL_UART_RxCpltCallback()</strong></p>
 </blockquote>
 <p><strong>深入分析</strong>：该函数会将数据缓冲区的地址存储在UART句柄中的<strong>pRxBuffPtr</strong>变量中，当有数据进入后，其实还是跟标准库一样，会首先进入<strong>USART1_IRQHandler（）</strong>这个中断服务函数，然后在中断服务函数中在调用HAL库的中断服务函数<strong>HAL_UART_IRQHandler(&amp;huart1)<strong>，然后在这个函数中去读取收到的数据并通过pRxBuffPtr地址往我们指定的数据缓冲区（即数组）里写入数据，并且在最后才会进入回到函数</strong>HAL_UART_RxCpltCallback（）</strong>中，因此在HAL库开发中不像在标准库需要我们自己去读取寄存器的值并存储下来，而是可以直接在回调函数中去处理缓冲区的值。</p>
-<h2 id="3-3、HAL-UART-Receive-DMA"><a href="#3-3、HAL-UART-Receive-DMA" class="headerlink" title="3.3、HAL_UART_Receive_DMA()"></a>3.3、HAL_UART_Receive_DMA()</h2><ul>
+<h2 id="3-2、HAL-UART-Receive-DMA"><a href="#3-2、HAL-UART-Receive-DMA" class="headerlink" title="3.2、HAL_UART_Receive_DMA()"></a>3.2、HAL_UART_Receive_DMA()</h2><ul>
 <li>函数功能：用于开启DMA串口接收（<em>需要注意每次接收完成后需要重新调用开启接收</em>）</li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C">HAL_StatusTypeDef <span class="hljs-title function_">HAL_UART_Receive_DMA</span><span class="hljs-params">(UART_HandleTypeDef *huart, <span class="hljs-type">uint8_t</span> *pData, <span class="hljs-type">uint16_t</span> Size)</span><br></code></pre></td></tr></table></figure>
 
-<p>这个函数与上面3.2的函数区别在于，该函数通过DMA进行串口数据传输和保存，当串口传输的数据量较大时，通过DMA来保存接收到的数据可以释放CPU资源以执行其他任务，通过这个函数开启接收不会进入串口中断服务函数，这是与上面3.1函数最大的区别，但是最后都会进入回调函数<strong>HAL_UART_RxCpltCallback（）</strong>中进行数据处理。</p>
-<h2 id="3-4、HAL-UART-Transmit"><a href="#3-4、HAL-UART-Transmit" class="headerlink" title="3.4、HAL_UART_Transmit()"></a>3.4、HAL_UART_Transmit()</h2><ul>
-<li>函数功能：<strong>阻塞式</strong>串口发送</li>
+<ul>
+<li><p><strong>huart：</strong>UART句柄</p>
+</li>
+<li><p><strong>pData：</strong>指向数据缓冲区（u8或u16数据元素）的指针（即你自己定义的数组或者变量）</p>
+</li>
+<li><p><strong>Size：</strong>要接收的数据元素（u8或u16）的数量</p>
+</li>
 </ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C">HAL_StatusTypeDef <span class="hljs-title function_">HAL_UART_Transmit</span><span class="hljs-params">(UART_HandleTypeDef *huart, <span class="hljs-type">uint8_t</span> *pData, <span class="hljs-type">uint16_t</span> Size, <span class="hljs-type">uint32_t</span> Timeout)</span><br></code></pre></td></tr></table></figure>
-
-<p>程序会等待串口发送完成才执行后面的语句</p>
-<h2 id="3-5、HAL-UART-Transmit-IT"><a href="#3-5、HAL-UART-Transmit-IT" class="headerlink" title="3.5、HAL_UART_Transmit_IT()"></a>3.5、HAL_UART_Transmit_IT()</h2><ul>
-<li>函数功能：<strong>非阻塞式</strong>串口发送函数</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">HAL_StatusTypeDef <span class="hljs-title function_">HAL_UART_Transmit_IT</span><span class="hljs-params">(UART_HandleTypeDef *huart, <span class="hljs-type">uint8_t</span> *pData, <span class="hljs-type">uint16_t</span> Size)</span>;<br></code></pre></td></tr></table></figure>
-
-<p>这是一个基于中断的非阻塞发送函数。它会启动数据传输，并允许你的程序在后台执行其他任务。当传输完成时，会触发中断，你可以在中断服务函数中处理完成事件<br>如果调用过于频繁可能会导致数据并发出现前面的数据发送失败的情况，比如：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs C">HAL_UART_Transmit_IT(&amp;husart1, <span class="hljs-string">&quot;hello&quot;</span>, <span class="hljs-number">5</span>);<br>HAL_UART_Transmit_IT(&amp;husart1, <span class="hljs-string">&quot;world&quot;</span>, <span class="hljs-number">5</span>);<br></code></pre></td></tr></table></figure>
-
-<p>可能会出现hello发送失败的情况</p>
-<h2 id="3-6、HAL-UART-Transmit-DMA"><a href="#3-6、HAL-UART-Transmit-DMA" class="headerlink" title="3.6、HAL_UART_Transmit_DMA()"></a>3.6、HAL_UART_Transmit_DMA()</h2><ul>
-<li>函数功能：将要发送的数据通过DMA传给串口进行发送</li>
+<p>这个函数与上面3.1的函数区别在于，该函数通过DMA进行串口数据传输和保存，当串口传输的数据量较大时，通过DMA来保存接收到的数据可以释放CPU资源以执行其他任务，通过这个函数开启接收不会进入串口中断服务函数，这是与上面3.1函数最大的区别，但是最后都会进入回调函数<strong>HAL_UART_RxCpltCallback（）</strong>中进行数据处理。</p>
+<h2 id="3-3、HAL-UART-Transmit-IT"><a href="#3-3、HAL-UART-Transmit-IT" class="headerlink" title="3.3、HAL_UART_Transmit_IT()"></a>3.3、HAL_UART_Transmit_IT()</h2><ul>
+<li>函数功能：串口发送函数</li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">HAL_StatusTypeDef <span class="hljs-title function_">HAL_UART_Transmit_DMA</span><span class="hljs-params">(UART_HandleTypeDef *huart, <span class="hljs-type">uint8_t</span> *pData, <span class="hljs-type">uint16_t</span> Size)</span><br></code></pre></td></tr></table></figure>
 
-<h2 id="3-7、HAL-UART-RxCpltCallback"><a href="#3-7、HAL-UART-RxCpltCallback" class="headerlink" title="3.7、HAL_UART_RxCpltCallback()"></a>3.7、HAL_UART_RxCpltCallback()</h2><ul>
+<p>参数与上面接收一致，只不过把接收变成了发送</p>
+<h2 id="3-4、HAL-UART-Transmit-DMA"><a href="#3-4、HAL-UART-Transmit-DMA" class="headerlink" title="3.4、HAL_UART_Transmit_DMA()"></a>3.4、HAL_UART_Transmit_DMA()</h2><ul>
+<li>函数功能：将要发送的数据通过DMA传给串口进行发送</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">HAL_StatusTypeDef <span class="hljs-title function_">HAL_UART_Transmit_IT</span><span class="hljs-params">(UART_HandleTypeDef *huart, <span class="hljs-type">uint8_t</span> *pData, <span class="hljs-type">uint16_t</span> Size)</span>;<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-5、HAL-UART-RxCpltCallback"><a href="#3-5、HAL-UART-RxCpltCallback" class="headerlink" title="3.5、HAL_UART_RxCpltCallback()"></a>3.5、HAL_UART_RxCpltCallback()</h2><ul>
 <li><p>接收完成回调函数</p>
 </li>
 <li><p>函数功能：串口接收回调函数，当数据接收完成后会进入该回调函数</p>
@@ -395,7 +386,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">HAL_UART_RxCpltCallback</span><span class="hljs-params">(UART_HandleTypeDef *huart)</span><br></code></pre></td></tr></table></figure>
 
 <p>该函数需要重写，并再函数中对收到的数据进行分析处理</p>
-<h2 id="3-8、HAL-UART-RxHalfCpltCallback"><a href="#3-8、HAL-UART-RxHalfCpltCallback" class="headerlink" title="3.8、HAL_UART_RxHalfCpltCallback()"></a>3.8、HAL_UART_RxHalfCpltCallback()</h2><ul>
+<h2 id="3-6、HAL-UART-RxHalfCpltCallback"><a href="#3-6、HAL-UART-RxHalfCpltCallback" class="headerlink" title="3.6、HAL_UART_RxHalfCpltCallback()"></a>3.6、HAL_UART_RxHalfCpltCallback()</h2><ul>
 <li>半接收完成回调函数</li>
 <li>函数功能：当UART接收到一个字节的数据时，该函数会被HAL库自动调用，用于处理接收到一半数据包的情况</li>
 </ul>
@@ -464,8 +455,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>蓝桥杯CT117E_M4(G431)-USART+DMA</div>
-      <div>http://example.com/2023/11/20/21-蓝桥杯CT117E_M4(G431)-USART/</div>
+      <div>蓝桥杯CT117E_M4(G431)-PWM输出</div>
+      <div>http://example.com/2023/11/21/22-蓝桥杯CT117E_M4(G431)-PWM输出/</div>
     </div>
     <div class="license-meta">
       
@@ -477,7 +468,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年11月20日</div>
+          <div>2023年11月21日</div>
         </div>
       
       
@@ -509,9 +500,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/21/22-%E8%93%9D%E6%A1%A5%E6%9D%AFCT117E_M4(G431)-PWM%E8%BE%93%E5%87%BA/" title="蓝桥杯CT117E_M4(G431)-PWM输出">
+                      <a href="/2023/12/04/23-shell%E8%84%9A%E6%9C%AC-%E9%82%AE%E4%BB%B6%E6%8F%90%E9%86%92%E7%B3%BB%E7%BB%9F/" title="shell脚本-邮件提醒系统">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">蓝桥杯CT117E_M4(G431)-PWM输出</span>
+                        <span class="hidden-mobile">shell脚本-邮件提醒系统</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -519,8 +510,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/17/20-%E8%93%9D%E6%A1%A5%E6%9D%AFCT117E_M4(G431)-KEY/" title="蓝桥杯CT117E_M4(G431)-KEY">
-                        <span class="hidden-mobile">蓝桥杯CT117E_M4(G431)-KEY</span>
+                      <a href="/2023/11/20/21-%E8%93%9D%E6%A1%A5%E6%9D%AFCT117E_M4(G431)-USART/" title="蓝桥杯CT117E_M4(G431)-USART+DMA">
+                        <span class="hidden-mobile">蓝桥杯CT117E_M4(G431)-USART+DMA</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
