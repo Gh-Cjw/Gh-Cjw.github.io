@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>ESP01S连接服务器、创建服务器</title>
+    <link href="/2023/12/09/24-ESP01S%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%81%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    <url>/2023/12/09/24-ESP01S%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%81%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
+    
+    <content type="html"><![CDATA[<hr><p>本例程中使用的ESP01S的固件为默认固件</p><h1 id="1、ESP01S连接电脑服务器"><a href="#1、ESP01S连接电脑服务器" class="headerlink" title="1、ESP01S连接电脑服务器"></a>1、ESP01S连接电脑服务器</h1><p>首先需要确保ESP01S和PC处于同一网络下（连接同一个WiFi），才能进行连接！</p><h2 id="1-1、相关AT指令"><a href="#1-1、相关AT指令" class="headerlink" title="1.1、相关AT指令"></a>1.1、相关AT指令</h2><table><thead><tr><th>AT指令</th><th>返回</th><th>说明</th></tr></thead><tbody><tr><td>AT</td><td>OK</td><td>AT测试指令，正常回复”OK”</td></tr><tr><td>AT+CWMODE=1</td><td>OK</td><td>设置esp8266为客户端模式（station)</td></tr><tr><td>AT+RST</td><td>OK</td><td>复位保存配置</td></tr><tr><td>AT+CWJAP=“WiFi名称” ,“WiFi密码”</td><td>WIFI CONNECTED WIFI GOT IP</td><td>配置ESP01连接相应的WiFi</td></tr><tr><td>AT+CIPMUX=1</td><td>OK</td><td>配置为多链接模式</td></tr><tr><td>AT+CIPSTART=0,“TCP”,“你的服务端IP”,PORT</td><td>0,CONNECT OK</td><td>进行TCP连接，0为当前客户端号码，”TCP”为通讯协议,服务端IP在本项目中为电脑的IP，PORT为端口号，本项目中为8888</td></tr><tr><td>AT+CIPSEND =客户端号码,length</td><td>OK</td><td>向服务端发送length长度的数据</td></tr></tbody></table><h2 id="1-2、具体操作"><a href="#1-2、具体操作" class="headerlink" title="1.2、具体操作"></a>1.2、具体操作</h2><h3 id="电脑监听端口"><a href="#电脑监听端口" class="headerlink" title="电脑监听端口"></a>电脑监听端口</h3><p>使用网路调试助手进行服务器端口监听，具体配置如下：本地主机地址请查看</p><p><img src="https://pic.imgdb.cn/item/6574183fc458853aef0a1312.png"></p><p>本地主机地址如果有多个，可以通过<strong>设置</strong>-&gt;<strong>WLAN</strong>-&gt;<strong>硬件属性</strong>中查看（图中下面的ip地址跟上面不同无需理会，截图时改了连接的WiFi因此ip不同，实际操作中要相同）</p><p><img src="https://pic.imgdb.cn/item/657418fac458853aef0ccfc4.png"></p><h3 id="ESP01S连接服务器"><a href="#ESP01S连接服务器" class="headerlink" title="ESP01S连接服务器"></a>ESP01S连接服务器</h3><p>打开串口调试助手，选择相应的串口号，波特率根据实际选择，一般为115200，打开串口，按顺序进行AT指令配置连接</p><ol><li>先设置为Station客户端模式</li><li>连接跟电脑一样的WiFi上</li><li>打开多链接</li><li>进行TCP连接</li></ol><p>如果没有打开多链接的话，使用<code>AT+CIPSTART=0,&quot;TCP&quot;,&quot;192.168.85.231&quot;,8888</code>可能会出错，单链接的话应该使用<code>AT+CIPSTART=&quot;TCP&quot;,&quot;192.168.85.231&quot;,8888</code>，即去掉客户端号码即可，在进行链接（特别提醒AT指令中的双引号逗号都是英文格式的，不要打错）</p><p><img src="https://pic.imgdb.cn/item/657419dfc458853aef10381a.png"></p><p>通过以上操作即可成功与电脑的8888端口进行TCP通讯！</p><h1 id="2、电脑连接ESP01S服务器"><a href="#2、电脑连接ESP01S服务器" class="headerlink" title="2、电脑连接ESP01S服务器"></a>2、电脑连接ESP01S服务器</h1><p>电脑需要连接到ESP01S发出的WiFi热点</p><h2 id="2-1、相关AT指令"><a href="#2-1、相关AT指令" class="headerlink" title="2.1、相关AT指令"></a>2.1、相关AT指令</h2><table><thead><tr><th>AT指令</th><th>返回</th><th>说明</th></tr></thead><tbody><tr><td>AT</td><td>OK</td><td>AT测试指令，正常回复”OK”</td></tr><tr><td>AT+CWMODE=2</td><td>OK</td><td>设置esp8266为服务端模式（AP)</td></tr><tr><td>AT+RST</td><td>OK</td><td>复位保存配置</td></tr><tr><td>AT+CWSAP=”要设置的WiFi名称”,”WiFi密码”,通道号,保密方式</td><td>OK</td><td>配置ESP01S本身发出的WiFi名称和密码，通道号范围0-14,加密方式是4即WPA_WPA2_PSK（此时需要主要WiFi密码至少要8位才能设置成功），也可为0直连</td></tr><tr><td>AT+CIPMUX=1</td><td>OK</td><td>配置为多链接模式</td></tr><tr><td>AT+CIPSERVER=1,8888</td><td>OK</td><td>进行TCP连接，0为当前客户端号码，”TCP”为通讯协议,服务端IP在本项目中为电脑的IP，PORT为端口号，本项目中为8888</td></tr><tr><td>AT+CIFSR</td><td>IP地址信息</td><td>查询ESP01S的IP地址</td></tr></tbody></table><h2 id="2-2、具体操作"><a href="#2-2、具体操作" class="headerlink" title="2.2、具体操作"></a>2.2、具体操作</h2><h3 id="ESP01S创建端口监听"><a href="#ESP01S创建端口监听" class="headerlink" title="ESP01S创建端口监听"></a>ESP01S创建端口监听</h3><p>通过AT指令配置ESP01S为服务端模式，并监听8888端口</p><p><img src="https://pic.imgdb.cn/item/65741c64c458853aef195ecb.png"></p><h3 id="电脑连接服务器"><a href="#电脑连接服务器" class="headerlink" title="电脑连接服务器"></a>电脑连接服务器</h3><p>依然使用网络调试助手，在电脑已经连接到ESP01S的AP热点的情况下，选择<strong>TCP Client</strong>客户端协议，远程主机地址即为上面通过AT指令<code>AT+CIFSR</code>看到的IPv4地址，端口依然为8888，然后打开连接即可</p><p><img src="https://pic.imgdb.cn/item/65741cebc458853aef1b43e2.png"></p><p>通过上面的步骤，就可以实现ESP01S与电脑之间的相互通讯了，两者互为服务端客户端都行</p><p><img src="https://pic.imgdb.cn/item/65741f29c458853aef238231.png"></p><hr>]]></content>
+    
+    
+    <categories>
+      
+      <category>模块</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>shell脚本-邮件提醒系统</title>
     <link href="/2023/12/04/23-shell%E8%84%9A%E6%9C%AC-%E9%82%AE%E4%BB%B6%E6%8F%90%E9%86%92%E7%B3%BB%E7%BB%9F/"/>
     <url>/2023/12/04/23-shell%E8%84%9A%E6%9C%AC-%E9%82%AE%E4%BB%B6%E6%8F%90%E9%86%92%E7%B3%BB%E7%BB%9F/</url>
